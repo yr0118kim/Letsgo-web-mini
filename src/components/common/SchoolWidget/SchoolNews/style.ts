@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const SchoolnewsContainer = styled.div`
-  width: 240px;
-  height: 120px;
+  width: 260px;
+  height: 140px;
   background-color: #f8f8f8;
   border-color: #ededed;
   border-style: solid;
@@ -53,6 +53,7 @@ export const SchoolnewsContent = styled.div`
 
   margin: 5% 0%;
   padding: 0% 2%;
+  width: 220px;
 
   text-overflow: ellipsis;
   overflow: hidden;

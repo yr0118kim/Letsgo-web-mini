@@ -4,8 +4,8 @@ export const SchoolWidgetContainer = styled.div`
   display: flex;
   flex-direction: column;
   background-color: white;
-  width: 280px;
-  height: 280px;
+  width: 300px;
+  height: 300px;
   border-radius: 20px;
   box-shadow: 0px 0px 18px 6px rgba(0, 0, 0, 0.01);
   padding: 20px;
