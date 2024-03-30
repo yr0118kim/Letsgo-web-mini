@@ -20,7 +20,7 @@ const Table: React.FC = () => {
   ];
 
   return (
-    <S.ConfirmListContainer onClick={() => navigate("/detail")}>
+    <S.ConfirmListContainer onClick={() => navigate("/community")}>
       {items.map((item) => (
         <S.ConfirmListItemContaienr key={item.id}>
           <S.ConfirmImageWrap>
