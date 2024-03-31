@@ -109,6 +109,7 @@ export const PostLike = styled.div`
   height: 38px;
   border-radius: 20px;
   background-color: #f1f1f3;
+  cursor: pointer;
 `;
 
 export const PostLikeImg = styled.img`
@@ -130,11 +131,11 @@ export const PostMore = styled.div`
   align-items: center;
   width: 38px;
   height: 38px;
-  background-color: #F1F1F3;
+  background-color: #f1f1f3;
 
   margin-left: 5%;
-
   border-radius: 100%;
-`
-export const PostMoreLikeImg = styled.img`
+
+  cursor: pointer;
 `;
+export const PostMoreLikeImg = styled.img``;
