@@ -10,9 +10,7 @@ export const HomeContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-
   width: 100%;
-  background-color: #f6f6f6;
 `;
 
 export const HomeTopWrap = styled.div`
@@ -35,8 +33,8 @@ export const WidgetWraper = styled.div`
   right: 50px;
 `;
 
-export const HomeWraper = styled.div`
+export const HomeBanner = styled.img`
   width: 100%;
-  display: flex;
-  flex-direction: row;
+  height: 220px;
+  object-fit: cover;
 `;

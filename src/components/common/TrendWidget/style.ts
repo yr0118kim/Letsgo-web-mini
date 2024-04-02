@@ -7,6 +7,7 @@ export const TrendWidgetContainer = styled.div`
   width: 280px;
   height: 360px;
   border-radius: 20px;
+  z-index: 999;
   box-shadow: 0px 0px 18px 6px rgba(0, 0, 0, 0.01);
   padding: 20px;
   box-sizing: border-box;

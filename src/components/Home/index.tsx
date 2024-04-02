@@ -10,7 +10,6 @@ import Layout from "../common/Layout";
 const Home = () => {
   return (
     <Layout>
-      <h.HomeBanner src={banner} alt="배너입니다." />
       <Header />
       <Table />
     </Layout>

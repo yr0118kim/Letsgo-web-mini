@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@toast-ui/react-editor": "^3.2.3",
     "@types/react-query": "^1.2.9",
     "axios": "^1.6.7",
     "floating-label-react": "^1.0.3",
