@@ -28,8 +28,8 @@ const SignupFirst = () => {
             <S.SignupInput
               type="text"
               placeholder="닉네임을 입력해주세요"
-              name="text"
-              value={registerData?.password}
+              name="nickname"
+              value={registerData?.nickname}
               onChange={handleChange}
             />
             <S.SignupInput

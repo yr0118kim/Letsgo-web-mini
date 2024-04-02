@@ -17,7 +17,7 @@ export const useUserLogin = () => {
   return useMutation<TokenResponse, AxiosError, UserLoginRequestDto, unknown>(
     async (signData: UserLoginRequestDto) => {
       const response = await instance.post<TokenResponse>(
-        `${import.meta.env.VITE_BASE_URL}/v1/api/auth/login`,
+        `${import.meta.env.VITE_BASE_URL}/auth/login`,
         signData
       );
       return response.data;

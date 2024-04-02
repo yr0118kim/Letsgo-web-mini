@@ -29,7 +29,7 @@ export const NAV_ITEM = [
     subItems: [
       {
         title: "통합",
-        link: "/community",
+        link: "/community/integration",
       },
       {
         title: "학교",
@@ -38,7 +38,7 @@ export const NAV_ITEM = [
 
       {
         title: "테마",
-        link: "/community/theme",
+        link: "/community",
       },
     ],
   },
