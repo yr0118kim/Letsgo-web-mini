@@ -1,17 +1,10 @@
-import { Header } from "../common/Header";
-import { Toggle } from "../common/Header/Toggle";
 import Layout from "../common/Layout";
 import WritingHeader from "./Header";
 import * as W from "./style";
-
-import { Editor } from "@toast-ui/react-editor";
-import "@toast-ui/editor/dist/toastui-editor.css";
-import { useNavigate } from "react-router-dom";
 import { useCreatePost } from "../../hooks/Writing/usePost";
 
 const Writing = () => {
-  const navigate = useNavigate();
-  const { postData, setPostData, handleChange, handleSubmit } = useCreatePost();
+  const { postData, handleChange, handleSubmit } = useCreatePost();
   return (
     <Layout>
       <W.WritingContainer onSubmit={handleSubmit}>

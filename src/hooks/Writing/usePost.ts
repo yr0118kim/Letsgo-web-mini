@@ -16,7 +16,6 @@ interface PostGroup {
 }
 
 let PostGroupList: Array<PostGroup>;
-// let allProviders: Array<Provider>;
 
 export function useCreatePost() {
   const [postData, setPostData] = useState<PostProps>({
