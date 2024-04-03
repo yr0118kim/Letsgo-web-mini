@@ -35,16 +35,16 @@ const MealWidget: React.FC = () => {
   let mealType = "";
   if (time >= 0 && time < 490) {
     mealType = "조식";
-  } else if (time >= 490 && time < 810) {
+  } if (time >= 490 && time < 810) {
+    mealType = "조식";
+  } if (time >= 810 && time < 1230) {
     mealType = "중식";
-  } else if (time >= 810 && time < 1230) {
+  } if (time >= 1230 && time < 1310) {
     mealType = "중식";
-  } else if (time >= 1230 && time < 1310) {
-    mealType = "중식";
-  } else if (time >= 1310 && time < 1910) {
+  } if (time >= 1310 && time < 1910) {
     mealType = "석식";
   } else {
-    mealType = "종료";
+    mealType = "급식이 종료되었습니다";
   }
 
   let meal = "";
