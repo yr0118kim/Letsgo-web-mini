@@ -44,20 +44,23 @@ const MealWidget: React.FC = () => {
   } else if (time >= 1310 && time < 1910) {
     mealType = "석식";
   } else {
-    mealType = "석식";
+    mealType = "종료";
   }
 
   let meal = "";
   if (schoolMenuData && schoolMenuData.data) {
     switch (mealType) {
       case "조식":
-        meal = schoolMenuData.data[0];
+        meal = schoolMenuData.data[0] || "해당 시간대의 식단이 없습니다.";
         break;
       case "중식":
-        meal = schoolMenuData.data[1];
+        meal = schoolMenuData.data[1] || "해당 시간대의 식단이 없습니다.";
         break;
       case "석식":
-        meal = schoolMenuData.data[2];
+        meal = schoolMenuData.data[2] || "해당 시간대의 식단이 없습니다.";
+        break;
+      case "종료":
+        meal = "오늘 급식이 종료되었습니다.";
         break;
       default:
         meal = "해당 시간대의 식단이 없습니다.";
@@ -70,9 +73,9 @@ const MealWidget: React.FC = () => {
       <M.MealWidgetContents>
         <M.MealWidgetTitle>오늘의 {mealType}</M.MealWidgetTitle>
         {isLoading ? (
-          <div style={{ color: "#fff" }}>Loading...</div>
+          <div style={{ color: "#fff", fontSize: "12px" }}>Loading...</div>
         ) : isError ? (
-          <div>급식 정보를 가져오는 중 오류가 발생했습니다.</div>
+          <div style={{ color: "#fff", fontSize: "12px" }}>급식 정보를 가져오는 중 오류가 발생했습니다.</div>
         ) : (
           <M.MealWidgetMenu>{meal}</M.MealWidgetMenu>
         )}

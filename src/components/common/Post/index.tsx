@@ -1,9 +1,19 @@
+import React, { useState } from "react";
 import * as d from "./style";
 import Like from "../../../assets/postLike.svg";
 import More from "../../../assets/more.svg";
 import PostImage from "../../../assets/postImg.svg";
+import { useLikePostMutation } from "../../../hooks/Post/useLikePost";
 
-const Post = () => {
+const Post: React.FC = () => {
+  const { mutate } = useLikePostMutation();
+  const [likeCount, setLikeCount] = useState(0);
+
+  const handleLikeClick = (postId: number) => {
+    mutate(postId);
+    setLikeCount(prevCount => prevCount + 1); 
+  };
+
   return (
     <d.PostContainer>
       <d.PostWrap>
@@ -28,7 +38,7 @@ const Post = () => {
               <div>
                 <d.PostRightSubTitle>조회수</d.PostRightSubTitle>
                 <d.PostRightSubTitle>댓글</d.PostRightSubTitle>
-                <d.PostRightSubTitle>좋아요</d.PostRightSubTitle>
+                <d.PostRightSubTitle onClick={() => handleLikeClick(123)}>좋아요</d.PostRightSubTitle>
               </div>
             </div>
           </d.PostSubTitleWrap>
@@ -46,9 +56,9 @@ const Post = () => {
           </d.PostTagContainer>
         </d.PostMidContainer>
         <d.PostBottomContainer>
-          <d.PostLike>
+          <d.PostLike onClick={() => handleLikeClick(123)}>
             <d.PostLikeImg src={Like} alt="좋아요" />
-            <d.PostLikeCount>323</d.PostLikeCount>
+            <d.PostLikeCount>{likeCount}</d.PostLikeCount>
           </d.PostLike>
           <d.PostMore>
             <d.PostMoreLikeImg src={More} alt="더보기" />
