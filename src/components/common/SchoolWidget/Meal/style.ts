@@ -30,6 +30,6 @@ export const MealWidgetMenu = styled.h2`
   width: 200px;
   font-family: "pretendard";
   font-weight: 300;
-  font-size: 0.7em;
+  font-size: 0.8em;
   color: white;
 `;

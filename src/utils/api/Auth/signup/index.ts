@@ -19,7 +19,7 @@ export const useUserRegister = () => {
   return useMutation<GeneralResponse, AxiosError, RegisterRequest, unknown>(
     async (registerData: RegisterRequest) => {
       const response = await instance.post<GeneralResponse>(
-        `${import.meta.env.VITE_BASE_URL}/v1/api/auth/register`,
+        `${import.meta.env.VITE_BASE_URL}/auth/register`,
         registerData
       );
       return response.data;
