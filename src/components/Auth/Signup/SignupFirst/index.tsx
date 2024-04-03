@@ -10,7 +10,7 @@ const SignupFirst = () => {
     <>
       <S.SignupContainer>
         <S.SignupWrapper onSubmit={handleSubmit}>
-          <S.SignupTopWraper> 
+          <S.SignupTopWraper>
             <img src={logo} width={50} height={50} alt="logo" />
             <S.SignupTitle>만나서 반가워요</S.SignupTitle>
             <S.SignupSubtitle>
@@ -28,7 +28,7 @@ const SignupFirst = () => {
             <S.SignupInput
               type="text"
               placeholder="닉네임을 입력해주세요"
-              name="text"
+              name="nickname"
               value={registerData?.password}
               onChange={handleChange}
             />
@@ -42,10 +42,7 @@ const SignupFirst = () => {
             {registerData.username && registerData.password ? (
               <S.SignupActiveButton>회원가입</S.SignupActiveButton>
             ) : (
-              <S.SignupPassiveButton
-                type={"submit"}
-                disabled={true}
-              >
+              <S.SignupPassiveButton type={"submit"} disabled={true}>
                 회원가입
               </S.SignupPassiveButton>
             )}

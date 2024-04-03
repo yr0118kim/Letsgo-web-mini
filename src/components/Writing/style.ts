@@ -4,9 +4,10 @@ type ToggleItemProps = {
   selected: boolean;
 };
 
-export const WritingContainer = styled.div`
+export const WritingContainer = styled.form`
   display: flex;
   width: 40%;
+  min-width: 500px;
   height: 60vh;
   position: sticky;
   top: 0;

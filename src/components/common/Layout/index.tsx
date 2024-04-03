@@ -16,7 +16,7 @@ const Layout = ({ children }: Props) => {
       <Nav />
       <h.HomeTopWrap>
         <h.HomeBanner src={banner} alt="배너입니다." />
-        {children}
+        <h.ChildrenWraper>{children}</h.ChildrenWraper>
       </h.HomeTopWrap>
       <h.WidgetWraper>
         <SchoolWidget></SchoolWidget>

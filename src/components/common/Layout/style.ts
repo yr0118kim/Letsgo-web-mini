@@ -11,6 +11,11 @@ export const HomeContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   width: 100%;
+  box-sizing: border-box;
+  @media screen and (max-width: 1280px) {
+    padding-left: 300px;
+    box-sizing: border-box;
+  }
 `;
 
 export const HomeTopWrap = styled.div`
@@ -18,6 +23,14 @@ export const HomeTopWrap = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+`;
+
+export const ChildrenWraper = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-width: 1400px;
 `;
 
 export const WidgetWraper = styled.div`
@@ -31,6 +44,10 @@ export const WidgetWraper = styled.div`
 
   top: 190px;
   right: 50px;
+
+  @media screen and (max-width: 1280px) {
+    display: none;
+  }
 `;
 
 export const HomeBanner = styled.img`
