@@ -5,21 +5,14 @@ import * as h from "./style";
 import { Header } from "../common/Header";
 import Table from "../common/Table";
 import TrendWidget from "../common/TrendWidget";
+import Layout from "../common/Layout";
 
 const Home = () => {
   return (
-    <h.HomeContainer>
-      <Nav />
-      <h.HomeTopWrap>
-        <h.HomeBanner src={banner} alt="배너입니다." />
-        <Header />
-        <Table />
-        <h.WidgetWraper>
-          <SchoolWidget></SchoolWidget>
-          <TrendWidget />
-        </h.WidgetWraper>
-      </h.HomeTopWrap>
-    </h.HomeContainer>
+    <Layout>
+      <Header />
+      <Table />
+    </Layout>
   );
 };
 
