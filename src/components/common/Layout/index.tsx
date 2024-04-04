@@ -2,8 +2,7 @@ import Nav from "../../common/Nav";
 import SchoolWidget from "../../common/SchoolWidget";
 import banner from "../../../assets/banner.svg";
 import * as h from "./style";
-import { Header } from "../../common/Header";
-import Table from "../../common/Table";
+import ProfileBanner from "../../../assets/profileBanner.svg";
 import TrendWidget from "../../common/TrendWidget";
 
 interface Props {
@@ -11,11 +10,13 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
+  const bannerSrc = window.location.pathname.includes('profile') ? ProfileBanner : banner;
+
   return (
     <h.HomeContainer>
       <Nav />
       <h.HomeTopWrap>
-        <h.HomeBanner src={banner} alt="배너입니다." />
+        <h.HomeBanner src={bannerSrc} alt="배너입니다." />
         <h.ChildrenWraper>{children}</h.ChildrenWraper>
       </h.HomeTopWrap>
       <h.WidgetWraper>
