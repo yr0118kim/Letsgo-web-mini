@@ -33,6 +33,7 @@ export const RefreshButton = styled.button`
   font-weight: 400;
   font-family: "Pretendard";
   text-decoration: underline;
+  margin-right: 1%;
 `;
 
 export const CommentTitle = styled.div`

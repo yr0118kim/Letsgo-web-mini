@@ -16,7 +16,7 @@ export const CommentInputWrap = styled.div`
   border-radius: 10px;
   border: 1px solid #f1f1f3;
   padding-left: 10px;
-  
+  color: #000;
 
   cursor: text;
 
@@ -35,7 +35,7 @@ export const CommentInputWrap = styled.div`
     font-size: 14px;
     font-weight: 400;
     font-family: "Pretendard";
-    color: #f9f9f9;
+    color: #000;
     margin: 0 2%
   }
 `;

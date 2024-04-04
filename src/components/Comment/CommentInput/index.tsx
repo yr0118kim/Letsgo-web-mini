@@ -37,7 +37,7 @@ const CommentInput = () => {
         ) : (
           <span>댓글을 달아주세요</span>
         )}
-        <s.CommentSubmit src={SubmitComment} alt="error" style={{ width: "20px", height: "20px", marginRight: "1%" }} />
+        <s.CommentSubmit src={SubmitComment} alt="error" style={{ width: "20px", height: "20px", marginRight: "2%" }} />
       </s.CommentInputWrap>
     </s.CommentInputContainer>
   );
