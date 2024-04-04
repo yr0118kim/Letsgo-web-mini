@@ -3,6 +3,7 @@ import Banner from "../../../../assets/banner.svg";
 import * as d from "./style";
 import { Header } from "../../Header";
 import Post from "../../Post";
+import Comment from "../../../Comment";
 
 const PostDetail = () => {
   return (
@@ -13,6 +14,7 @@ const PostDetail = () => {
         <Header />
       </d.DetailTopWrap>
       <Post />
+      <Comment />
     </d.DetailContainer>
   );
 };

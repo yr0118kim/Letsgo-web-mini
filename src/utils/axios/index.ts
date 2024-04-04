@@ -1,5 +1,4 @@
-import axios, { AxiosError } from "axios";
-import { setToken, getToken } from "../functions/TokenManagers";
+import axios from "axios";
 
 const instance = axios.create({
   baseURL: `${import.meta.env.VITE_BASE_URL}`,
