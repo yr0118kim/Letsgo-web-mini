@@ -1,34 +1,40 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import Likes from "../../../assets/like.svg";
 import Comment from "../../../assets/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import { useNavigate } from "react-router-dom";
-import { usePostListQuery } from "../../../hooks/Post/usePostList";
+import { getPostList, PostType } from "../../../hooks/Post/getPostList";
 
 const Table: React.FC = () => {
   const navigate = useNavigate();
+  const [postListData, setPostListData] = useState<PostType[]>([]);
+  const [error, setError] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const {
-    data: postListData,
-    error,
-    isLoading,
-    isError,
-  } = usePostListQuery(undefined, undefined, "recent");
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const data = await getPostList(0);
+        setPostListData(data);
+        setIsLoading(false);
+      } catch (error) {
+        setError("데이터를 가져오는 중 오류가 발생했습니다.");
+        setIsLoading(false);
+      }
+    };
 
-  console.log("postListData:", postListData);
-  console.log("Error : ",error);
-  
-  
+    fetchData();
+  }, []);
 
   return (
     <S.ConfirmListContainer onClick={() => navigate("/community")}>
       {isLoading ? (
         <div>Loading...</div>
-      ) : isError ? (
-        <div>데이터를 가져오는 중 오류가 발생했습니다.</div>
-      ) : !postListData ? (
+      ) : error ? (
+        <div>{error}</div>
+      ) : !postListData.length ? (
         <div>게시물이 없습니다.</div>
       ) : (
         postListData.map((post) => (
@@ -58,7 +64,6 @@ const Table: React.FC = () => {
       )}
     </S.ConfirmListContainer>
   );
-  
 };
 
 export default Table;
