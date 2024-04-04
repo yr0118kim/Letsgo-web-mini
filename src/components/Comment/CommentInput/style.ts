@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const CommentInputContainer = styled.div`
   display: flex;
   align-items: center;
-  width: 90%;
+  width: 95%;
   background-color: #f8f8f8;
   border-radius: 10px;
 `;
@@ -25,7 +25,7 @@ export const CommentInputWrap = styled.div`
     font-weight: 400;
     font-family: "Pretendard";
     color: #9f9faf;
-    margin-left: 7%;
+    margin: 0 2%
   }
 
   input {
@@ -35,8 +35,8 @@ export const CommentInputWrap = styled.div`
     font-size: 14px;
     font-weight: 400;
     font-family: "Pretendard";
-    color: #9f9faf;
-    margin-left: 7%;
+    color: #f9f9f9;
+    margin: 0 2%
   }
 `;
 

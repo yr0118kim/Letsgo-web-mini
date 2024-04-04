@@ -1,11 +1,19 @@
 import * as c from "./style";
-import CommentTitle from "../common/Comment/CommentTitle";
 import CommentInput from "./CommentInput";
 
 const Comment = () => {
+  const commentCount: string = String(10);
+
   return (
     <c.CommentContainer>
-      <CommentTitle>댓글</CommentTitle>
+      <c.CommentFlex>
+        <c.CommentTitle>
+          댓글 <c.CommentCount>{commentCount}</c.CommentCount>
+        </c.CommentTitle>
+        <c.RefreshButton onClick={() => window.location.reload()}>
+          새로고침
+        </c.RefreshButton>
+      </c.CommentFlex>
       <c.CommentInputWrap>
         <CommentInput />
       </c.CommentInputWrap>
