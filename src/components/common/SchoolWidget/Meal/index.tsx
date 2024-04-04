@@ -21,7 +21,11 @@ const MealWidget: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
-  const { data: schoolMenuData, isLoading, isError } = useSchoolMenuQuery(
+  const {
+    data: schoolMenuData,
+    isLoading,
+    isError,
+  } = useSchoolMenuQuery(
     String(date.year),
     String(date.month),
     String(date.day)
@@ -36,12 +40,8 @@ const MealWidget: React.FC = () => {
   if (time >= 0 && time < 490) {
     mealType = "조식";
   } else if (time >= 490 && time < 810) {
-    mealType = "조식";
-  } else if (time >= 810 && time < 1230) {
     mealType = "중식";
-  } else if (time >= 1230 && time < 1310) {
-    mealType = "중식";
-  } else if (time >= 1310 && time < 1910) {
+  } else if (time >= 811 && time < 1230) {
     mealType = "석식";
   } else {
     mealType = "급식이 종료되었습니다";
@@ -75,7 +75,9 @@ const MealWidget: React.FC = () => {
         {isLoading ? (
           <div style={{ color: "#fff", fontSize: "12px" }}>Loading...</div>
         ) : isError ? (
-          <div style={{ color: "#fff", fontSize: "12px" }}>급식 정보를 가져오는 중 오류가 발생했습니다.</div>
+          <div style={{ color: "#fff", fontSize: "12px" }}>
+            급식 정보를 가져오는 중 오류가 발생했습니다.
+          </div>
         ) : (
           <M.MealWidgetMenu>{meal}</M.MealWidgetMenu>
         )}

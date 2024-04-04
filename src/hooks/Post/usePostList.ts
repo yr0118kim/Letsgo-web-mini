@@ -14,15 +14,11 @@ export interface Post {
   liked: number;
   commented: number;
   isLike: boolean;
+  // userImg: string;
   createdAt: string;
   updatedAt: string;
 }
 
-interface PostListResponse {
-  code: string;
-  message: string;
-  data: Post[];
-}
 
 export const usePostListQuery = (
   category?: number,
@@ -37,26 +33,25 @@ export const usePostListQuery = (
   if (user !== undefined) queryKey.push(user.toString());
   if (order !== undefined) queryKey.push(order);
 
-  return useQuery<PostListResponse, AxiosError>(
-    queryKey,
-    async () => {
-      const queryParams = new URLSearchParams();
+  return useQuery<Post[], AxiosError>(queryKey, async () => {
+    const queryParams = new URLSearchParams();
 
-      if (category !== undefined) queryParams.append("category", category.toString());
-      if (user !== undefined) queryParams.append("user", user.toString());
-      if (order !== undefined) queryParams.append("order", order);
+    if (category !== undefined)
+      queryParams.append("category", category.toString());
+    if (user !== undefined) queryParams.append("user", user.toString());
+    if (order !== undefined) queryParams.append("order", order);
 
-      const response = await instance.get<PostListResponse>(
-        `${import.meta.env.VITE_BASE_URL}/post?${queryParams.toString()}`,
-        {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-          withCredentials: true,
-        }
-      );
+    const response = await instance.get<Post[]>(
+      `${import.meta.env.VITE_BASE_URL}/post`,
+      {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+        withCredentials: true,
+      }
+    );
 
-      return response.data;
-    }
-  );
+    return response.data;    
+  });
 };
+

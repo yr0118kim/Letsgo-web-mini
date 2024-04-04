@@ -10,9 +10,17 @@ import { usePostListQuery } from "../../../hooks/Post/usePostList";
 const Table: React.FC = () => {
   const navigate = useNavigate();
 
-  const { data: postListData, isLoading, isError } = usePostListQuery(undefined, undefined, "recent");
+  const {
+    data: postListData,
+    error,
+    isLoading,
+    isError,
+  } = usePostListQuery(undefined, undefined, "recent");
 
   console.log("postListData:", postListData);
+  console.log("Error : ",error);
+  
+  
 
   return (
     <S.ConfirmListContainer onClick={() => navigate("/community")}>
@@ -20,8 +28,10 @@ const Table: React.FC = () => {
         <div>Loading...</div>
       ) : isError ? (
         <div>데이터를 가져오는 중 오류가 발생했습니다.</div>
+      ) : !postListData ? (
+        <div>게시물이 없습니다.</div>
       ) : (
-        postListData?.data.map((post) => (
+        postListData.map((post) => (
           <S.ConfirmListItemContaienr key={post.id}>
             <S.ConfirmImageWrap>
               <img src={Test} alt="test" />
@@ -48,6 +58,7 @@ const Table: React.FC = () => {
       )}
     </S.ConfirmListContainer>
   );
+  
 };
 
 export default Table;
