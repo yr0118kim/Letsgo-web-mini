@@ -3,9 +3,10 @@ import { useMutation } from "react-query";
 import instance from "../../../axios";
 
 export interface TokenResponse {
-  data: any;
-  accessToken: string;
-  refreshToken: string;
+  data: {
+    access_token: string
+    refresh_token: string
+  }
 }
 
 export interface UserLoginRequestDto {

@@ -30,8 +30,10 @@ export function useLogin() {
     e.preventDefault();
     login.mutate(credentials, {
       onSuccess: (e) => {
-        setToken(e.data.accessToken, e.data.refreshToken);
+        setToken(e.data.access_token, e.data.refresh_token);
         toast.success("로그인을 성공했습니다.");
+        console.log("accessToken : ", e.data.access_token);
+        
         navigate("/");
       },
       onError: (err) => {
