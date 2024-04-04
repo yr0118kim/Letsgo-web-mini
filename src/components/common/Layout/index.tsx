@@ -10,7 +10,11 @@ interface Props {
 }
 
 const Layout = ({ children }: Props) => {
-  const bannerSrc = window.location.pathname.includes('profile') ? ProfileBanner : banner;
+  const bannerSrc = ["profile", "school", "guestbook", "tag", "achieve"].some((path) =>
+    window.location.pathname.includes(path)
+  )
+    ? ProfileBanner
+    : banner;
 
   return (
     <h.HomeContainer>

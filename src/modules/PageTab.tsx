@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
-import { Helmet } from "react-helmet-async";
+import { Helmet } from "react-helmet";
 
 interface PageTabProps {
   tabItems: { title?: string; url: string; component: React.ReactNode }[];
