@@ -26,7 +26,7 @@ const Nav = () => {
                 isMatch={pathname === item.link ? true : false}
                 onClick={() => {
                   setIsCommunityClicked(!isCommunityClicked);
-                  navigate("/community");
+                  navigate("/post");
                 }}
               >
                 {pathname === item.link ? (

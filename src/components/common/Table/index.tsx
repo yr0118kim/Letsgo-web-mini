@@ -29,7 +29,7 @@ const Table: React.FC = () => {
   }, []);
 
   return (
-    <S.ConfirmListContainer onClick={() => navigate("/community")}>
+    <S.ConfirmListContainer onClick={() => navigate("/post/:id")}>
       {isLoading ? (
         <div>Loading...</div>
       ) : error ? (
