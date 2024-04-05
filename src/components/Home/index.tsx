@@ -4,7 +4,6 @@ import banner from "../../assets/banner.svg";
 import * as h from "./style";
 import { Header } from "../common/Header";
 import Table from "../common/Table";
-import TrendWidget from "../common/TrendWidget";
 import Layout from "../common/Layout";
 
 const Home = () => {

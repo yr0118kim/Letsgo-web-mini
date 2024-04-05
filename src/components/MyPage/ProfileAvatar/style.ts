@@ -3,15 +3,17 @@ import styled from "styled-components";
 export const AvatarWrapper = styled.div`
   display: flex;
   align-items: center;
-  margin: 1% 0;
+  margin: 1% 5%;
 `
 
 export const ProfileWraper = styled.div`
-  margin-top: 10px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start; 
+  justify-content: flex-start; 
+
+  margin: 3% 10%;
+  white-space: nowrap;
 `;
 
 export const ProfileName = styled.h2`
@@ -19,14 +21,18 @@ export const ProfileName = styled.h2`
   font-family: "pretendard";
   font-weight: 400;
   font-size: 18px;
-`;
 
+  white-space: nowrap;
+`;
 
 export const ProfileIntroduction = styled.h5`
   color: #7f7f7f;
   font-family: "pretendard";
-  font-size: 1em;
-  font-weight: 400;
+  font-size: 14px;
+  font-weight: 300;
+  margin: 2% 0;
+
+  white-space: nowrap;
 `;
 
 export const NavAvatarImg = styled.img`
@@ -45,7 +51,7 @@ export const NavAvatarWraper = styled.div`
 
 export const NavAvatarTag = styled.div`
   position: relative;
-  margin: 10px;
+  margin: 2% 0;
   border: 2px solid transparent;
   background-image: linear-gradient(#fff, #fff),
     linear-gradient(
@@ -60,6 +66,7 @@ export const NavAvatarTag = styled.div`
   border-style: solid;
   border-radius: 50px;
 `;
+
 
 export const NavAvatarTagText = styled.div`
   color: black;
