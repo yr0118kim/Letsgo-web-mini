@@ -2,12 +2,14 @@ import { useLocation } from "react-router-dom";
 import PageTab from "../../modules/PageTab";
 import Layout from "../common/Layout";
 import { useState } from "react";
+import ProfileAvatar from "./ProfileAvatar";
 
 const MyPage = () => {
   const location = useLocation();
   const [tabNum, setTabNum] = useState(location.pathname === "/recent" ? 1 : 0);
   return (
     <Layout>
+      <ProfileAvatar />
       <PageTab
         tabNum={tabNum}
         setTabNum={setTabNum}

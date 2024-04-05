@@ -9,12 +9,7 @@ interface PageTabProps {
   tabWidth?: number;
 }
 
-const PageTab: FC<PageTabProps> = ({
-  tabNum,
-  setTabNum,
-  tabItems,
-  tabWidth,
-}) => {
+const PageTab: FC<PageTabProps> = ({ tabNum, setTabNum, tabItems, tabWidth = 7 }) => {
   const tabButtonHandler = (idx: number) => {
     const newTabItem = tabItems[idx];
     setTabNum(idx);
@@ -22,71 +17,59 @@ const PageTab: FC<PageTabProps> = ({
   };
 
   return (
-    <nav>
+    <nav style={{ marginTop: "2%" }}>
       <Helmet>
         <title>{tabItems[tabNum].title}</title>
       </Helmet>
-      <TabContainer tabCount={tabItems.length} tabWidth={tabWidth || 7}>
+      <FocusBar tabNum={tabNum} tabCount={tabItems.length} />
+      <TabContainer tabCount={tabItems.length} tabWidth={tabWidth}>
         {tabItems.map((tab, idx) => (
           <TabButton
             key={idx}
             tabNum={tabNum}
-            tabWidth={tabWidth || 7}
+            tabWidth={tabWidth}
             onClick={() => tabButtonHandler(idx)}
+            isActive={idx === tabNum}
           >
-            {tabItems[idx].component}
+            {tab.component}
           </TabButton>
         ))}
-        <FocusBar tabNum={tabNum} tabCount={tabItems.length} />
       </TabContainer>
     </nav>
   );
 };
 
-interface TabContainerProps {
-  tabCount: number;
-  tabWidth: number;
-}
-const TabContainer = styled.div<TabContainerProps>`
-  width: ${(props) => props.tabCount * props.tabWidth + `rem`};
+const TabContainer = styled.div<{ tabCount: number; tabWidth: number }>`
+  width: ${({ tabCount, tabWidth }) => tabCount * tabWidth + `rem`};
+  align-items: center;
   min-height: min-content;
   display: flex;
   flex-wrap: wrap;
 `;
 
-interface TabProps {
-  tabNum: number;
-  tabWidth: number;
-}
-const TabButton = styled.div<TabProps>`
-  width: ${(props) => props.tabWidth + `rem`};
+const TabButton = styled.div<{ tabWidth: number; isActive: boolean }>`
+  width: ${({ tabWidth }) => tabWidth + `rem`};
   display: flex;
-  position: relative;
   justify-content: center;
   align-items: center;
-  font-size: 1.125rem;
+  font-family: 'Pretendard';
+  font-weight: 100;
+  font-size: 12px;
   height: 3rem;
   text-decoration: none;
-  &:nth-child(${(props) => props.tabNum + 1}) {
-    color: rgb(52, 58, 64);
-    font-weight: bold;
-  }
-  color: rgb(134, 142, 150);
+  color: ${({ isActive }) => (isActive ? "rgb(52, 58, 64)" : "rgb(134, 142, 150)")};
+  font-weight: ${({ isActive }) => (isActive ? "bold" : "normal")};
   cursor: pointer;
 `;
 
-interface TabFocusProps {
-  tabCount: number;
-  tabNum: number;
-}
-const FocusBar = styled.div<TabFocusProps>`
-  width: ${(props) => (props.tabCount === 0 ? 0 : 100 / props.tabCount + `%`)};
+const FocusBar = styled.div<{ tabCount: number; tabNum: number }>`
+  width: ${({ tabCount }) => (tabCount === 0 ? 0 : 100 / tabCount + `%`)};
   height: 2px;
   bottom: 0px;
   background: rgb(52, 58, 64);
   transition: transform 0.35s cubic-bezier(0, 0, 0.1, 1.5) 0s;
   position: relative;
-  transform: ${(props) => `translateX(${props.tabNum * 100}%);`};
+  transform: ${({ tabNum }) => `translateX(${tabNum * 100}%);`};
 `;
 
-export default React.memo(PageTab);
+export default PageTab;
