@@ -7,6 +7,7 @@ import ProfileAvatar from "./ProfileAvatar";
 const MyPage = () => {
   const location = useLocation();
   const [tabNum, setTabNum] = useState(location.pathname === "/recent" ? 1 : 0);
+
   return (
     <Layout>
       <ProfileAvatar />
