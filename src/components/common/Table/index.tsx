@@ -6,6 +6,8 @@ import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import { useNavigate } from "react-router-dom";
 import { usePostListQuery } from "../../../hooks/Post/usePostList";
+import Comments from "./Comment";
+import CommentFrame from "./Comment";
 
 const Table: React.FC = () => {
   const navigate = useNavigate();
@@ -18,12 +20,10 @@ const Table: React.FC = () => {
   } = usePostListQuery(undefined, undefined, "recent");
 
   console.log("postListData:", postListData);
-  console.log("Error : ",error);
-  
-  
+  console.log("Error : ", error);
 
   return (
-    <S.ConfirmListContainer onClick={() => navigate("/community")}>
+    <S.ConfirmListContainer>
       {isLoading ? (
         <div>Loading...</div>
       ) : isError ? (
@@ -32,7 +32,10 @@ const Table: React.FC = () => {
         <div>게시물이 없습니다.</div>
       ) : (
         postListData.map((post) => (
-          <S.ConfirmListItemContaienr key={post.id}>
+          <S.ConfirmListItemContaienr
+            onClick={() => navigate("/community")}
+            key={post.id}
+          >
             <S.ConfirmImageWrap>
               <img src={Test} alt="test" />
             </S.ConfirmImageWrap>
@@ -56,9 +59,9 @@ const Table: React.FC = () => {
           </S.ConfirmListItemContaienr>
         ))
       )}
+      <CommentFrame />
     </S.ConfirmListContainer>
   );
-  
 };
 
 export default Table;

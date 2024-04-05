@@ -5,6 +5,7 @@ import SignupFirstPage from "../pages/Signup/first";
 import SignupSecondPage from "../pages/Signup/second";
 import PostDetail from "../components/common/Table/Detail";
 import WritingPage from "../pages/Writing";
+import CategoryPage from "../pages/Category";
 
 const Router = () => {
   return (
@@ -15,10 +16,9 @@ const Router = () => {
       <Route element={<SignupSecondPage />} path="/SignupSecond" />
       <Route element={<PostDetail />} path="/detail" />
       <Route element={<WritingPage />} path="/write" />
-      <Route element={<PostDetail />} path="/community" />
+      <Route element={<CategoryPage />} path="/category" />
     </Routes>
   );
 };
-
 
 export default Router;
