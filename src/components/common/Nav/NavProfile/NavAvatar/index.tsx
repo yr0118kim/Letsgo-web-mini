@@ -1,5 +1,6 @@
 import * as N from "./style";
 import Avatar from "../../../../../assets/img/ProfileImage.svg";
+
 const NavAvatar = () => {
   return (
     <N.AvatarWraper>

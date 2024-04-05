@@ -15,13 +15,13 @@ const Writing = () => {
           value={postData.title}
           placeholder="제목"
           onChange={handleChange}
-        ></W.WritingTitleInput>
+        />
         <W.WritingContentInput
           name="content"
           value={postData.content}
           placeholder="내용을 입력하세요"
           onChange={handleChange}
-        ></W.WritingContentInput>
+        />
         <W.ImageButton type="submit"></W.ImageButton>
       </W.WritingContainer>
     </Layout>
