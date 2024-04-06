@@ -1,7 +1,7 @@
 import React from "react";
 import * as S from "./style";
 import Likes from "../../../assets/like.svg";
-import Comment from "../../../assets/comment.svg";
+import Comment from "../../../assets/img/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import { useNavigate } from "react-router-dom";
@@ -59,7 +59,6 @@ const Table: React.FC = () => {
           </S.ConfirmListItemContaienr>
         ))
       )}
-      <CommentFrame />
     </S.ConfirmListContainer>
   );
 };

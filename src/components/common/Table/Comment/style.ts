@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CommentContainer = styled.div`
   width: 100%;
   min-width: 40%;
-  height: 40vh;
   background-color: #fff;
   margin-top: 2%;
   padding: 2%;

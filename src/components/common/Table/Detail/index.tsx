@@ -3,17 +3,14 @@ import Banner from "../../../../assets/banner.svg";
 import * as d from "./style";
 import { Header } from "../../Header";
 import Post from "../../Post";
+import CommentFrame from "../Comment";
+import Layout from "../../Layout";
 
 const PostDetail = () => {
   return (
-    <d.DetailContainer>
-      <Nav />
-      <d.DetailTopWrap>
-        <img src={Banner} alt="배너입니다." />
-        <Header />
-      </d.DetailTopWrap>
+    <Layout>
       <Post />
-    </d.DetailContainer>
+    </Layout>
   );
 };
 

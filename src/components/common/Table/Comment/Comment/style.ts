@@ -7,16 +7,19 @@ export const CommentContainer = styled.div`
   padding: 2%;
   box-sizing: border-box;
   column-gap: 2%;
+  background-color: white;
 `;
 
 export const CommentProfile = styled.img`
   width: 30px;
+  height: 30px;
 `;
 
 export const CommentContentWraper = styled.div`
   display: flex;
   row-gap: 5px;
   flex-direction: column;
+  padding-top: 2px;
 `;
 
 export const CommentTitle = styled.h2`
@@ -45,8 +48,27 @@ export const CommentContent = styled.h2`
   font-weight: 500;
 `;
 
-export const CommentBottomWraper = styled.div``;
+export const CommentBottomWraper = styled.div`
+  display: flex;
+  align-items: center;
+
+  column-gap: 4px;
+`;
 
 export const CommentBottomIcon = styled.img`
-  width: 40px;
+  width: 16px;
+`;
+
+export const CommentIconWraper = styled.div`
+  display: flex;
+  flex-direction: row;
+
+  column-gap: 2px;
+`;
+
+export const CommentBottomText = styled.h2`
+  font-family: "pretendard";
+  color: #4d4d53;
+  font-size: 0.8em;
+  font-weight: 400;
 `;

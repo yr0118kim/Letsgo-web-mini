@@ -15,8 +15,14 @@ const Comment = () => {
           안녕하세요 대구소프트웨어마이스터고 김예림입니다
         </C.CommentContent>
         <C.CommentBottomWraper>
-          <C.CommentBottomIcon src={Like}></C.CommentBottomIcon>
-          <C.CommentBottomIcon src={Chat}></C.CommentBottomIcon>
+          <C.CommentIconWraper>
+            <C.CommentBottomIcon src={Like}></C.CommentBottomIcon>
+            <C.CommentBottomText>6</C.CommentBottomText>
+          </C.CommentIconWraper>
+          <C.CommentIconWraper>
+            <C.CommentBottomIcon src={Chat}></C.CommentBottomIcon>
+            <C.CommentBottomText>6</C.CommentBottomText>
+          </C.CommentIconWraper>
         </C.CommentBottomWraper>
       </C.CommentContentWraper>
     </C.CommentContainer>

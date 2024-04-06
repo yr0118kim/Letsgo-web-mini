@@ -4,6 +4,7 @@ import Like from "../../../assets/postLike.svg";
 import More from "../../../assets/more.svg";
 import PostImage from "../../../assets/postImg.svg";
 import { useLikePostMutation } from "../../../hooks/Post/useLikePost";
+import CommentFrame from "../Table/Comment";
 
 const Post: React.FC = () => {
   const { mutate } = useLikePostMutation();
@@ -11,7 +12,7 @@ const Post: React.FC = () => {
 
   const handleLikeClick = (postId: number) => {
     mutate(postId);
-    setLikeCount(prevCount => prevCount + 1); 
+    setLikeCount((prevCount) => prevCount + 1);
   };
 
   return (
@@ -38,7 +39,9 @@ const Post: React.FC = () => {
               <div>
                 <d.PostRightSubTitle>조회수</d.PostRightSubTitle>
                 <d.PostRightSubTitle>댓글</d.PostRightSubTitle>
-                <d.PostRightSubTitle onClick={() => handleLikeClick(123)}>좋아요</d.PostRightSubTitle>
+                <d.PostRightSubTitle onClick={() => handleLikeClick(123)}>
+                  좋아요
+                </d.PostRightSubTitle>
               </div>
             </div>
           </d.PostSubTitleWrap>
@@ -65,6 +68,7 @@ const Post: React.FC = () => {
           </d.PostMore>
         </d.PostBottomContainer>
       </d.PostWrap>
+      <CommentFrame />
     </d.PostContainer>
   );
 };
