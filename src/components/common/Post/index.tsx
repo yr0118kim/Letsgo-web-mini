@@ -2,24 +2,43 @@ import React, { useState } from "react";
 import * as d from "./style";
 import Like from "../../../assets/postLike.svg";
 import More from "../../../assets/more.svg";
-import PostImage from "../../../assets/postImg.svg";
-import { useLikePostMutation } from "../../../hooks/Post/useLikePost";
-import CommentFrame from "../Table/Comment";
+import { useLikePost } from "../../../hooks/Post/useLikePost";
+import { useRecoilState } from "recoil";
+import { likeCountState } from "../../../components/atom/likeCount";
+import { useReadPost } from "../../../hooks/Post/useReadPost";
+
+import { useParams } from "react-router-dom";
 
 const Post: React.FC = () => {
-  const { mutate } = useLikePostMutation();
-  const [likeCount, setLikeCount] = useState(0);
+  const { id = "1" } = useParams<{ id?: string }>();
+  const postId = Number(id);
 
-  const handleLikeClick = (postId: number) => {
-    mutate(postId);
-    setLikeCount((prevCount) => prevCount + 1);
+  if (isNaN(postId) || postId <= 0) {
+    return <div>존재하지 않는 게시물 입니다.</div>;
+  }
+
+  const { handleLikePost, handleCancelLikePost } = useLikePost();
+  const [likeCount, setLikeCount] = useRecoilState(likeCountState);
+  const [isLiked, setIsLiked] = useState(false);
+  const { post, isLoading, error } = useReadPost(postId);
+
+  const handleLikeClick = () => {
+    if (!isLiked) {
+      handleLikePost(postId);
+    } else {
+      handleCancelLikePost(postId);
+    }
+    setIsLiked((prevIsLiked) => !prevIsLiked);
   };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error}</div>;
 
   return (
     <d.PostContainer>
       <d.PostWrap>
         <d.PostTopWrap>
-          <d.PostTitle>홍대에서 페이커만남 ㄹㅇ.jpg</d.PostTitle>
+          <d.PostTitle>{post?.title}</d.PostTitle>
           <d.PostSubTitleWrap>
             <div
               style={{
@@ -39,7 +58,7 @@ const Post: React.FC = () => {
               <div>
                 <d.PostRightSubTitle>조회수</d.PostRightSubTitle>
                 <d.PostRightSubTitle>댓글</d.PostRightSubTitle>
-                <d.PostRightSubTitle onClick={() => handleLikeClick(123)}>
+                <d.PostRightSubTitle onClick={handleLikeClick}>
                   좋아요
                 </d.PostRightSubTitle>
               </div>
@@ -48,9 +67,9 @@ const Post: React.FC = () => {
         </d.PostTopWrap>
         <d.PostMidContainer>
           <d.PostMidWrap>
-            <img src={PostImage} alt="post" />
+            {post?.picture && <img src={post.picture} alt="post" />}
           </d.PostMidWrap>
-          <d.PostHeading>응 상시숭배야</d.PostHeading>
+          <d.PostHeading>{post?.content}</d.PostHeading>
           <d.PostTagContainer style={{ marginBottom: "2%" }}>
             <d.PostTagHeading>#태그</d.PostTagHeading>
             <d.PostTagHeading>#태그</d.PostTagHeading>
@@ -59,7 +78,7 @@ const Post: React.FC = () => {
           </d.PostTagContainer>
         </d.PostMidContainer>
         <d.PostBottomContainer>
-          <d.PostLike onClick={() => handleLikeClick(123)}>
+          <d.PostLike onClick={handleLikeClick}>
             <d.PostLikeImg src={Like} alt="좋아요" />
             <d.PostLikeCount>{likeCount}</d.PostLikeCount>
           </d.PostLike>

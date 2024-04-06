@@ -24,21 +24,21 @@ export const NAV_ITEM = [
   },
   {
     title: "커뮤니티",
-    link: "/community",
+    link: "/post",
     icon: Community,
     subItems: [
       {
         title: "통합",
-        link: "/community/integration",
+        link: "/post/integration",
       },
       {
         title: "학교",
-        link: "/community/school",
+        link: "/post/school",
       },
 
       {
         title: "테마",
-        link: "/community",
+        link: "/post",
       },
     ],
   },
