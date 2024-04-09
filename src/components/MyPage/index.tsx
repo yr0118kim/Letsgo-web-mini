@@ -3,10 +3,11 @@ import PageTab from "../../modules/PageTab";
 import Layout from "../common/Layout";
 import { useState } from "react";
 import ProfileAvatar from "./ProfileAvatar";
+import Table from "./Table";
 
 const MyPage = () => {
   const location = useLocation();
-  const [tabNum, setTabNum] = useState(location.pathname === "/recent" ? 1 : 0);
+  const [tabNum, setTabNum] = useState(location.pathname === "/profile" ? 0 : 1);
 
   return (
     <Layout>
@@ -62,6 +63,7 @@ const MyPage = () => {
           },
         ]}
       />
+      {tabNum === 0 && location.pathname === "/profile" && <Table />}
     </Layout>
   );
 };
