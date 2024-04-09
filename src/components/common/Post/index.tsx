@@ -20,7 +20,6 @@ const Post: React.FC = () => {
   const { handleLikePost, handleCancelLikePost } = useLikePost();
   const [likeCount, setLikeCount] = useRecoilState(likeCountState);
   const [isLiked, setIsLiked] = useState(false);
-
   const { post, isLoading, error } = useReadPost(postId);
 
   const handleLikeClick = () => {
@@ -88,6 +87,7 @@ const Post: React.FC = () => {
           </d.PostMore>
         </d.PostBottomContainer>
       </d.PostWrap>
+      <CommentFrame />
     </d.PostContainer>
   );
 };

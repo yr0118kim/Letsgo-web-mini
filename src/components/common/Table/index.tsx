@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import * as S from "./style";
 import Likes from "../../../assets/like.svg";
-import Comment from "../../../assets/comment.svg";
+import Comment from "../../../assets/img/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import { useNavigate } from "react-router-dom";
@@ -24,7 +24,6 @@ const Table: React.FC = () => {
         setIsLoading(false);
       }
     };
-
     fetchData();
   }, []);
 
@@ -38,7 +37,10 @@ const Table: React.FC = () => {
         <div>게시물이 없습니다.</div>
       ) : (
         postListData.map((post) => (
-          <S.ConfirmListItemContaienr key={post.id}>
+          <S.ConfirmListItemContaienr
+            onClick={() => navigate("/community")}
+            key={post.id}
+          >
             <S.ConfirmImageWrap>
               <img src={Test} alt="test" />
             </S.ConfirmImageWrap>
