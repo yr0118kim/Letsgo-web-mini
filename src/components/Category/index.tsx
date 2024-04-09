@@ -1,11 +1,12 @@
+import { Header } from "../common/Header";
 import Layout from "../common/Layout";
 import Table from "../common/Table";
-import * as C from "./style";
 
 const Category = () => {
   return (
     <Layout>
-      <Table></Table>
+      <Header />
+      <Table />
     </Layout>
   );
 };
