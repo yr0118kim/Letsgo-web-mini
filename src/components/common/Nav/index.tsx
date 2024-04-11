@@ -14,7 +14,7 @@ const Nav = () => {
 
   return (
     <n.NavContainer>
-      <n.NavTopWrap>
+      <n.NavTopWrap onClick={() => navigate("/")}>
         <n.NavTitle src={Hlogo} />
       </n.NavTopWrap>
       <NavProfile />

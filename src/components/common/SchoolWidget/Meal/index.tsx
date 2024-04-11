@@ -44,7 +44,7 @@ const MealWidget: React.FC = () => {
   } else if (time >= 780 && time < 1150) {
     mealType = "석식";
   } else {
-    mealType = "종료";
+    mealType = "급식";
   }
 
   let meal = "";
@@ -59,7 +59,7 @@ const MealWidget: React.FC = () => {
       case "석식":
         meal = schoolMenuData.data[2] || "해당 시간대의 식단이 없습니다.";
         break;
-      case "종료":
+      case "급식":
         meal = "오늘 급식이 종료되었습니다.";
         break;
       default:
