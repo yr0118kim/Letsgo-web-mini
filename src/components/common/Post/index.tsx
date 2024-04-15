@@ -8,6 +8,7 @@ import { likeCountState } from "../../../components/atom/likeCount";
 import { useReadPost } from "../../../hooks/Post/useReadPost";
 
 import { useParams } from "react-router-dom";
+import CommentFrame from "../Table/Comment";
 
 const Post: React.FC = () => {
   const { id = "1" } = useParams<{ id?: string }>();

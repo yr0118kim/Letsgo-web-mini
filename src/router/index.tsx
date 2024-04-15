@@ -7,11 +7,13 @@ import PostDetail from "../components/common/Table/Detail";
 import WritingPage from "../pages/Writing";
 import CategoryPage from "../pages/Category";
 import MyPage from "../components/MyPage";
+import PopularPage from "../pages/Home/Popular";
 
 const Router = () => {
   return (
     <Routes>
       <Route element={<HomePage />} path="/" />
+      <Route element={<PopularPage />} path="/popular" />
       <Route element={<LoginPage />} path="/login" />
       <Route element={<SignupFirstPage />} path="/Signup" />
       <Route element={<SignupSecondPage />} path="/SignupSecond" />
