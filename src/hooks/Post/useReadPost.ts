@@ -56,7 +56,6 @@ interface Post {
   updatedAt: string;
 }
 
-// API 응답 데이터 타입 정의
 interface ApiResponse<T> {
   code: string;
   message: string;
