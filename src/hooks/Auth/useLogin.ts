@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUserLogin } from "../../utils/api/Auth/login";
 import { setToken } from "../../utils/functions/TokenManagers";
+import { getUserData } from "../../utils/api/User/getUserData"
 
 export function useLogin() {
   const [credentials, setCredentials] = useState<{
@@ -26,32 +27,33 @@ export function useLogin() {
     }));
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    login.mutate(credentials, {
-      onSuccess: (e) => {
-        setToken(e.data.access_token, e.data.refresh_token);
-        toast.success("로그인을 성공했습니다.");
-        console.log("accessToken : ", e.data.access_token);
-        
-        navigate("/");
-      },
-      onError: (err) => {
-        if (axios.isAxiosError(err)) {
-          const { status } = err.response?.data as AxiosError;
-          switch (status) {
-            case 400:
-              toast.error("로그인에 실패했습니다");
-              break;
-            case 404:
-              toast.error("아이디와 비밀번호를 다시 확인해주세요");
-              break;
-            default:
-              toast.error("로그인에 실패했습니다");
-          }
-        } else toast.error("네트워크 연결 상태를 확인해주세요");        
-      },
-    });
+    try {
+      const response = await login.mutateAsync(credentials);
+      setToken(response.data.access_token, response.data.refresh_token);
+      toast.success("로그인을 성공했습니다.");
+      console.log("accessToken : ", response.data.access_token);
+      
+      await getUserData();
+
+      navigate("/");
+    } catch (err) {
+      if (axios.isAxiosError(err)) {
+        const { status } = err.response?.data as AxiosError;
+        switch (status) {
+          case 400:
+            toast.error("로그인에 실패했습니다");
+            break;
+          case 404:
+            toast.error("아이디와 비밀번호를 다시 확인해주세요");
+            break;
+          default:
+            toast.error("로그인에 실패했습니다");
+        }
+      } else toast.error("네트워크 연결 상태를 확인해주세요");
+    }
   };
+
   return { credentials, setCredentials, handleChange, handleSubmit };
 }

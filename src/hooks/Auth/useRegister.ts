@@ -33,7 +33,7 @@ export function useRegister() {
     e.preventDefault();
     register.mutate(registerData, {
       onSuccess: () => { 
-        toast.success("회원가입에 성공했습니다.");
+        toast.success("회원가입에 성공했습니다.");      
         navigate("/login");
       },
       onError: (err) => { 

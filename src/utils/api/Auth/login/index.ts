@@ -4,6 +4,7 @@ import instance from "../../../axios";
 
 export interface TokenResponse {
   data: {
+    nickname: string;
     access_token: string
     refresh_token: string
   }
