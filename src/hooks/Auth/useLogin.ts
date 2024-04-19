@@ -4,6 +4,7 @@ import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUserLogin } from "../../utils/api/Auth/login";
 import { setToken } from "../../utils/functions/TokenManagers";
+import { getUserData } from "../../utils/api/User/getUserData";
 
 export function useLogin() {
   const [credentials, setCredentials] = useState<{
@@ -34,6 +35,8 @@ export function useLogin() {
       toast.success("로그인을 성공했습니다.");
       console.log("accessToken : ", response.data.access_token);
       navigate("/");
+      
+      await getUserData();
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const { status } = err.response?.data as AxiosError;
