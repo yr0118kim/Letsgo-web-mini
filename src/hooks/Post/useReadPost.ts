@@ -3,6 +3,28 @@ import { useEffect, useState } from "react";
 import { getToken } from "../../utils/functions/TokenManagers";
 import instance from "../../utils/axios";
 
+interface Post {
+  id: number;
+  user: number;
+  category: number;
+  title: string;
+  content: string;
+  picture: string;
+  viewed: number;
+  liked: number;
+  commented: number;
+  isLike: boolean;
+  userImg: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+interface ApiResponse<T> {
+  code: string;
+  message: string;
+  data: T;
+}
+
 export function useReadPost(postId: number) {
   const [post, setPost] = useState<Post | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
@@ -38,26 +60,4 @@ export function useReadPost(postId: number) {
   }, [postId]); 
 
   return { post, isLoading, error };
-}
-
-interface Post {
-  id: number;
-  user: number;
-  category: number;
-  title: string;
-  content: string;
-  picture: string;
-  viewed: number;
-  liked: number;
-  commented: number;
-  isLike: boolean;
-  userImg: string;
-  createdAt: string;
-  updatedAt: string;
-}
-
-interface ApiResponse<T> {
-  code: string;
-  message: string;
-  data: T;
 }

@@ -18,7 +18,7 @@ export async function getUserData(): Promise<UserData[]> {
       throw new Error('액세스 토큰이 없습니다.');
     }
 
-    const response = await instance.get(`${import.meta.env.VITE_BASE_URL}/user`, {
+    const response = await instance.get("/user", {
       headers: {
         Authorization: `Bearer ${accessToken}`,
       },  

@@ -1,3 +1,5 @@
+import { AxiosError } from "axios";
+import { useQuery } from "react-query";
 import instance from "../../utils/axios";
 import { getToken } from "../../utils/functions/TokenManagers";
 
@@ -17,19 +19,22 @@ export interface PostType {
   updatedAt: string;
 }
 
-export const getPostList = async (category: number): Promise<PostType[]> => {
-  try {
-    const { accessToken } = getToken();
-    const params = { category };
-    const response = await instance.get("/post", {
-      params,
-      headers: {
-        Authorization: `Bearer ${accessToken}`,
-      },
-    });
-    return response.data.data;
-  } catch (error) {
-    console.error(error);
-    return [];
-  }
+export const usePostListQuery = (category: number) => {
+  return useQuery<PostType[], AxiosError>(
+    ["postList", category],
+    async () => {
+      const { accessToken } = getToken();
+      const params = { category };
+      const response = await instance.get("/post", {
+        params,
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+      return response.data.data;
+    },
+    {
+      cacheTime: 300000,
+    }
+  );
 };

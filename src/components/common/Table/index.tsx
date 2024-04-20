@@ -1,42 +1,27 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import * as S from "./style";
 import Likes from "../../../assets/like.svg";
 import Comment from "../../../assets/img/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import { useNavigate } from "react-router-dom";
-import { getPostList, PostType } from "../../../hooks/Post/getPostList";
+import { usePostListQuery, PostType } from "../../../hooks/Post/getPostList";
 
 const Table: React.FC = () => {
   const navigate = useNavigate();
-  const [postListData, setPostListData] = useState<PostType[]>([]);
-  const [error, setError] = useState<string | null>(null);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const data = await getPostList(0);
-        setPostListData(data);
-        setIsLoading(false);
-      } catch (error) {
-        setError("데이터를 가져오는 중 오류가 발생했습니다.");
-        setIsLoading(false);
-      }
-    };
-    fetchData();
-  }, []);
+  const { data: postListData, isLoading, isError } = usePostListQuery(0);
 
   return (
     <S.ConfirmListContainer onClick={() => navigate("/post/:id")}>
       {isLoading ? (
         <div>Loading...</div>
-      ) : error ? (
-        <div>{error}</div>
-      ) : !postListData.length ? (
-        <div>게시물이 없습니다.</div>
+      ) : isError ? (
+        <div> </div>
+      ) : !postListData?.length ? (
+        <div>No posts available.</div>
       ) : (
-        postListData.map((post) => (
+        postListData.map((post: PostType) => (
           <S.ConfirmListItemContaienr
             onClick={() => navigate("/community")}
             key={post.id}
@@ -54,11 +39,11 @@ const Table: React.FC = () => {
             </S.ConfirmListItem>
             <S.RightTopInfo>{post.createdAt}</S.RightTopInfo>
             <S.RightBottomInfo>
-              <img src={Likes} alt="좋아요 수" />
+              <img src={Likes} alt="Likes" />
               <span>{post.liked}</span>
-              <img src={Comment} alt="댓글 수" />
+              <img src={Comment} alt="Comments" />
               <span>{post.commented}</span>
-              <img src={Viewer} alt="본사람" />
+              <img src={Viewer} alt="Viewers" />
               <span>{post.viewed}</span>
             </S.RightBottomInfo>
           </S.ConfirmListItemContaienr>

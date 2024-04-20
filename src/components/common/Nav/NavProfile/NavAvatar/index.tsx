@@ -1,10 +1,8 @@
 import * as N from "./style";
 import Avatar from "../../../../../assets/img/ProfileImage.svg";
-import { useRegister } from "../../../../../hooks/Auth/useRegister";
 
 const NavAvatar = () => {
-  const { registerData } = useRegister();
-  console.log("registerData:", registerData); 
+  const registerData = JSON.parse(localStorage.getItem("registerData") || "{}");
 
   return (
     <N.AvatarWraper>
@@ -12,7 +10,7 @@ const NavAvatar = () => {
         <N.NavAvatarTagText>#즐겁다</N.NavAvatarTagText>
       </N.NavAvatarTag>
       <N.NavAvatarWraper>
-        <N.NavAvatarImg src={Avatar}></N.NavAvatarImg>
+        <N.NavAvatarImg src={Avatar} />
       </N.NavAvatarWraper>
       <N.NavTextWraper>
         <N.NavName>{registerData?.nickname}</N.NavName>
