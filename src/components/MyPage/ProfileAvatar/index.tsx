@@ -2,8 +2,6 @@ import * as a from "./style";
 import Avatar from "../../../assets/img/ProfileImage.svg";
 
 const ProfileAvatar = () => {
-  const registerData = JSON.parse(localStorage.getItem("registerData") || "{}");
-
   return (
     <a.AvatarWrapper>
       <a.NavAvatarWraper>
@@ -12,7 +10,7 @@ const ProfileAvatar = () => {
       <a.ProfileWraper>
         <a.ProfileName>대구소프트웨어마이스터고 3학년 여학생</a.ProfileName>
         <a.ProfileIntroduction>
-          안녕하세요 {registerData?.nickname}입니다 ✨
+          안녕하세요 김예림입니다 ✨
         </a.ProfileIntroduction>
         <a.NavAvatarTag>
           <a.NavAvatarTagText>#즐겁다</a.NavAvatarTagText>

@@ -4,7 +4,6 @@ import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useUserLogin } from "../../utils/api/Auth/login";
 import { setToken } from "../../utils/functions/TokenManagers";
-import { useRegister } from "./useRegister";
 
 export function useLogin() {
   const [credentials, setCredentials] = useState<{
@@ -14,8 +13,6 @@ export function useLogin() {
     username: "",
     password: "",
   });
-  const { getRegisterDataFromLocalStorage } = useRegister();
-  const registerData = getRegisterDataFromLocalStorage();
   const navigate = useNavigate();
   const login = useUserLogin();
 
@@ -33,9 +30,16 @@ export function useLogin() {
     e.preventDefault();
     try {
       const response = await login.mutateAsync(credentials);
+      console.log("Updated credentials:", credentials);
+      console.log("Login response:", response);
       setToken(response.data.access_token, response.data.refresh_token);
       toast.success("로그인을 성공했습니다.");
-      navigate("/");     
+      
+      console.log("accessToken : ", response.data.access_token);
+      navigate("/");
+      console.log("Updated credentials:", credentials);
+      console.log("Login response:", response);
+      
     } catch (err) {
       if (axios.isAxiosError(err)) {
         const { status } = err.response?.data as AxiosError;
@@ -53,5 +57,5 @@ export function useLogin() {
     }
   };
 
-  return { credentials, setCredentials, handleChange, handleSubmit, registerData };
+  return { credentials, setCredentials, handleChange, handleSubmit };
 }
