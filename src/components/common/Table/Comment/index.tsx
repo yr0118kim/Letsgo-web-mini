@@ -9,7 +9,7 @@ const CommentFrame = () => {
     <C.CommentContainer>
       <C.CommentHeaderWraper>
         <C.CommentHeaderTitle>댓글</C.CommentHeaderTitle>
-        <C.CommentNumber>5</C.CommentNumber>
+        <C.CommentNumber>{data.length}</C.CommentNumber>
         <C.CommentRestart>새로고침</C.CommentRestart>
       </C.CommentHeaderWraper>
       <C.CommentInputWraper>
