@@ -31,12 +31,22 @@ export const PostTitle = styled.span`
   font-size: 24px;
   font-family: "Pretendard";
   font-weight: 400;
+
+  margin: 0 2%;
 `;
 
 export const PostSubTitleWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3%;
+
+  margin: 3% 2%;
+
+  span {
+    font-size: 14px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    color: #706F88;
+  }
 `;
 
 export const PostLeftSubTitle = styled.span`

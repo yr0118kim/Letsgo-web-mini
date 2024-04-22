@@ -58,10 +58,13 @@ const Post: React.FC = () => {
               </div>
               <div>
                 <d.PostRightSubTitle>조회수</d.PostRightSubTitle>
+                <span>{post?.viewed}</span>
                 <d.PostRightSubTitle>댓글</d.PostRightSubTitle>
+                <span>{post?.commented}</span>
                 <d.PostRightSubTitle onClick={handleLikeClick}>
                   좋아요
                 </d.PostRightSubTitle>
+                <span>{post?.liked}</span>
               </div>
             </div>
           </d.PostSubTitleWrap>
