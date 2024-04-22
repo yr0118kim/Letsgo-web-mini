@@ -31,7 +31,6 @@ export function useCreatePost() {
       ...prevData,
       [name]: value,
     }));
-    console.log(postData);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

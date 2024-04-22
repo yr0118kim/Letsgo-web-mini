@@ -36,7 +36,6 @@ export function useRegister() {
         toast.success("회원가입에 성공했습니다."); 
         localStorage.setItem("registerData", JSON.stringify(registerData));   
         navigate("/login");
-        console.log("register data", registerData);
       },
       onError: (err) => { 
         if (axios.isAxiosError(err)) {

@@ -40,7 +40,6 @@ export function useCreatePost() {
       ...prevData,
       [name]: value,
     }));
-    console.log(postData);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -71,7 +70,6 @@ export function useCreatePost() {
       category: categorySelected,
     }));
 
-    console.log(postData);
   }, [categorySelected]);
 
   const handleCategoryClick = (index: number) => {

@@ -30,7 +30,6 @@ export const usePostListQuery = () => {
           },
         }
       );
-      console.log("Response from server:", response.data);
       return response.data.data;
     },
     {
