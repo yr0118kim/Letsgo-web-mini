@@ -4,7 +4,7 @@ import Like from "../../../assets/postLike.svg";
 import More from "../../../assets/more.svg";
 import { useLikePost } from "../../../hooks/Post/useLikePost";
 import { useRecoilState } from "recoil";
-import { likeCountState } from "../../../components/atom/likeCount";
+import { likeCountState } from "../../store/common/likeCount";
 import { useReadPost } from "../../../hooks/Post/useReadPost";
 import { useParams } from "react-router-dom";
 import CommentFrame from "../Table/Comment";

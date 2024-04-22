@@ -3,7 +3,7 @@ import axios, { AxiosError } from "axios";
 import { useLikeCommentMutation } from "../../utils/api/Post/Like";
 import { useCancelCommentLikeMutation } from "../../utils/api/Post/Like";
 import { useRecoilState } from "recoil";
-import { likeCountState } from "../../components/atom/likeCount";
+import { likeCountState } from "../../components/store/common/likeCount";
 
 export function useLikePost() {
   const likePostMutation = useLikeCommentMutation();

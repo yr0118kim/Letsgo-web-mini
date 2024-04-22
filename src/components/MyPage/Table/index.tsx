@@ -1,15 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import * as S from "./style";
 import Likes from "../../../assets/like.svg";
 import Comment from "../../../assets/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import PostToggle from "../../../assets/toggle.svg";
-import { useNavigate } from "react-router-dom";
+import Modal from "../../../components/common/Modal";
+import useModal from "../../../hooks/util/useModal";
 
 const Table: React.FC = () => {
-  const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
+  const { open } = useModal();
+  const [isModalOpen, setIsModalOpen] = React.useState(false); // 모달 열림 상태 추가
+
+  const handleModalOpen = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   const items = [
     { id: 1, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
@@ -36,7 +45,7 @@ const Table: React.FC = () => {
               <span>1분전</span>
             </S.ConfirmSubTitle>
           </S.ConfirmListItem>
-          <S.RightTopInfo>
+          <S.RightTopInfo onClick={handleModalOpen}>
             <img src={PostToggle} alt="err" />
           </S.RightTopInfo>
           <S.RightBottomInfo>
@@ -49,6 +58,7 @@ const Table: React.FC = () => {
           </S.RightBottomInfo>
         </S.ConfirmListItemContaienr>
       ))}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
     </S.ConfirmListContainer>
   );
 };
