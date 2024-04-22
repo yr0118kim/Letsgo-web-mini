@@ -4,10 +4,12 @@ import Likes from "../../../assets/like.svg";
 import Comment from "../../../assets/img/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { usePostListQuery, PostType } from "../../../hooks/Post/getPostList";
 
 const Table: React.FC = () => {
+  const navigate = useNavigate();
+
   const { data: postListData, isLoading, isError } = usePostListQuery();
 
   return (
@@ -20,7 +22,11 @@ const Table: React.FC = () => {
         <div>게시물이 없습니다.</div>
       ) : (
         postListData.map((post: PostType) => (
-          <Link to={`/post/${post.id}`} key={post.id}>
+          <div 
+            onClick={() => navigate(`/post/${post.id}`)}
+            key={post.id}
+            style={{ cursor: "pointer" }}
+          >
             <S.ConfirmListItemContaienr>
               <S.ConfirmImageWrap>
                 <img src={Test} alt="test" />
@@ -35,7 +41,7 @@ const Table: React.FC = () => {
               </S.ConfirmListItem>
               <S.RightTopInfo>{post.createdAt}</S.RightTopInfo>
               <S.RightBottomInfo>
-                <img src={Likes} alt="Likes" />
+                <img width={40} src={Likes} alt="Likes" />
                 <span>{post.liked}</span>
                 <img src={Comment} alt="Comments" />
                 <span>{post.commented}</span>
@@ -43,7 +49,7 @@ const Table: React.FC = () => {
                 <span>{post.viewed}</span>
               </S.RightBottomInfo>
             </S.ConfirmListItemContaienr>
-          </Link>
+          </div>
         ))
       )}
     </S.ConfirmListContainer>
