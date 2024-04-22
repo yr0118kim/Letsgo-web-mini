@@ -6,7 +6,6 @@ import { useLikePost } from "../../../hooks/Post/useLikePost";
 import { useRecoilState } from "recoil";
 import { likeCountState } from "../../../components/atom/likeCount";
 import { useReadPost } from "../../../hooks/Post/useReadPost";
-
 import { useParams } from "react-router-dom";
 import CommentFrame from "../Table/Comment";
 
