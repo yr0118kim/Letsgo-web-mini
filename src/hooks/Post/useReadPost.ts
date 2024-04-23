@@ -25,7 +25,7 @@ interface ApiResponse<T> {
   data: T;
 }
 
-export function useReadPost(postId: number) {
+export function useReadPost(id: number) {
   const [post, setPost] = useState<Post | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -37,7 +37,7 @@ export function useReadPost(postId: number) {
 
       try {
         const response = await instance.get<ApiResponse<Post>>(
-          `${import.meta.env.VITE_BASE_URL}/post/${postId}`,
+          `${import.meta.env.VITE_BASE_URL}/post/${id}`,
           {
             headers: {
               Authorization: `Bearer ${accessToken}`,
@@ -59,7 +59,7 @@ export function useReadPost(postId: number) {
     };
 
     fetchPost();
-  }, [postId]);
+  }, [id]);
 
   return { post, isLoading, error };
 }

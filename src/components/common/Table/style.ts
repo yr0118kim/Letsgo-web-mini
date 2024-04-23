@@ -73,4 +73,8 @@ export const RightBottomInfo = styled.div`
     color: #000000;
     margin-right: 10%;
   }
+
+  img {
+    width: 25px;
+  }
 `;

@@ -41,7 +41,7 @@ const Table: React.FC = () => {
               </S.ConfirmListItem>
               <S.RightTopInfo>{post.createdAt}</S.RightTopInfo>
               <S.RightBottomInfo>
-                <img width={40} src={Likes} alt="Likes" />
+                <img src={Likes} alt="Likes" />
                 <span>{post.liked}</span>
                 <img src={Comment} alt="Comments" />
                 <span>{post.commented}</span>

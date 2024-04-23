@@ -1,10 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import * as d from "./style";
 import Like from "../../../assets/postLike.svg";
+import IsLike from "../../../assets/isLike.svg";
 import More from "../../../assets/more.svg";
 import { useLikePost } from "../../../hooks/Post/useLikePost";
-import { useRecoilState } from "recoil";
-import { likeCountState } from "../../store/common/likeCount";
 import { useReadPost } from "../../../hooks/Post/useReadPost";
 import { useParams } from "react-router-dom";
 import CommentFrame from "../Table/Comment";
@@ -18,9 +17,14 @@ const Post: React.FC = () => {
   }
 
   const { handleLikePost, handleCancelLikePost } = useLikePost();
-  const [likeCount, setLikeCount] = useRecoilState(likeCountState);
   const [isLiked, setIsLiked] = useState(false);
   const { post, isLoading, error } = useReadPost(postId);
+
+  useEffect(() => {
+    if (post?.isLike) {
+      setIsLiked(true);
+    }
+  }, [post]);
 
   const handleLikeClick = () => {
     if (!isLiked) {
@@ -28,7 +32,6 @@ const Post: React.FC = () => {
     } else {
       handleCancelLikePost(postId);
     }
-    setIsLiked((prevIsLiked) => !prevIsLiked);
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -82,8 +85,12 @@ const Post: React.FC = () => {
         </d.PostMidContainer>
         <d.PostBottomContainer>
           <d.PostLike onClick={handleLikeClick}>
-            <d.PostLikeImg src={Like} alt="좋아요" />
-            <d.PostLikeCount>{likeCount}</d.PostLikeCount>
+            {isLiked ? (
+              <d.PostLikeImg src={IsLike} alt="좋아요" />
+            ) : (
+              <d.PostLikeImg src={Like} alt="좋아요" />
+            )}
+            <d.PostLikeCount>{post?.liked}</d.PostLikeCount>
           </d.PostLike>
           <d.PostMore>
             <d.PostMoreLikeImg src={More} alt="더보기" />

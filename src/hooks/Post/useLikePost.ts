@@ -21,10 +21,10 @@ export function useLikePost() {
           const { status } = err.response?.data as AxiosError;
           switch (status) {
             case 400:
-              toast.error("게시물 좋아요에 실패했습니다.")
+              toast.error("이미 좋아요를 누른 게시물입니다.")
               break;
             default: 
-              toast.error("게시물 좋아요 요청에 실패했습니다.");
+              toast.error("이미 좋아요를 누른 게시물입니다.");
           }
         } else {
           toast.error("네트워크 연결 상태를 확인해주세요.");
@@ -61,4 +61,3 @@ export function useLikePost() {
     handleCancelLikePost,
   };
 }
-
