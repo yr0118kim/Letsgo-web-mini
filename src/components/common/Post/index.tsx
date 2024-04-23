@@ -11,7 +11,7 @@ import { useParams } from "react-router-dom";
 import CommentFrame from "../Table/Comment";
 
 const Post: React.FC = () => {
-  const { id = "1" } = useParams<{ id?: string }>();
+  const { id } = useParams<{ id?: string }>();
   const postId = Number(id);
 
   if (isNaN(postId) || postId <= 0) {
@@ -88,7 +88,7 @@ const Post: React.FC = () => {
           </d.PostMore>
         </d.PostBottomContainer>
       </d.PostWrap>
-      <CommentFrame />
+      <CommentFrame postId={postId} />
     </d.PostContainer>
   );
 };

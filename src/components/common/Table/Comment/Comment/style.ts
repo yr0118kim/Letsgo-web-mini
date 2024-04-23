@@ -51,7 +51,7 @@ export const CommentContent = styled.h2`
 export const CommentBottomWraper = styled.div`
   display: flex;
   align-items: center;
-
+  margin-top: 1%;
   column-gap: 4px;
 `;
 

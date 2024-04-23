@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const CommentContainer = styled.form`
   display: flex;
-  width: 40%;
-  height: 50vh;
   flex-direction: column;
   background-color: #fff;
 `;
@@ -54,6 +52,7 @@ export const CommentCount = styled.span`
   -webkit-background-clip: text;
   background-clip: text;
 `;
+
 export const CommentInputContainer = styled.div`
   display: flex;
   align-items: center;

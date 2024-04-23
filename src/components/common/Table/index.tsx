@@ -11,6 +11,7 @@ const Table: React.FC = () => {
   const navigate = useNavigate();
 
   const { data: postListData, isLoading, isError } = usePostListQuery(0);
+  console.log(postListData);
 
   return (
     <S.ConfirmListContainer onClick={() => navigate("/post/:id")}>
