@@ -7,10 +7,12 @@ import Test from "../../../assets/test.svg";
 import PostToggle from "../../../assets/toggle.svg";
 import Modal from "../../../components/common/Modal";
 import useModal from "../../../hooks/util/useModal";
+import { usePostListQuery, PostType } from "../../../hooks/Post/MyPage/usePostList"; // 커스텀 훅 임포트
 
 const Table: React.FC = () => {
   const { open } = useModal();
-  const [isModalOpen, setIsModalOpen] = React.useState(false); // 모달 열림 상태 추가
+  const [isModalOpen, setIsModalOpen] = React.useState(false);
+  const { data: posts, isLoading, isError } = usePostListQuery();
 
   const handleModalOpen = () => {
     setIsModalOpen(true);
@@ -20,19 +22,12 @@ const Table: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const items = [
-    { id: 1, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 2, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 3, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 4, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 5, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 6, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 7, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-  ];
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {isError}</div>;
 
   return (
     <S.ConfirmListContainer>
-      {items.map((item) => (
+      {posts?.map((item: PostType) => ( 
         <S.ConfirmListItemContaienr key={item.id}>
           <S.ConfirmImageWrap>
             <img src={Test} alt="test" />
@@ -50,11 +45,11 @@ const Table: React.FC = () => {
           </S.RightTopInfo>
           <S.RightBottomInfo>
             <img src={Likes} width={45} alt="좋아요 수" />
-              <span>16</span>
+              <span>{item.liked}</span>
             <img src={Comment} alt="댓글 수" />
-              <span>2</span>
+              <span>{item.commented}</span>
             <img src={Viewer} alt="본사람" />
-              <span>50</span>
+              <span>{item.viewed}</span>
           </S.RightBottomInfo>
         </S.ConfirmListItemContaienr>
       ))}
