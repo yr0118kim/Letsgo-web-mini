@@ -39,7 +39,7 @@ const Table: React.FC = () => {
                   <span>선화예술고등학교 3학년</span>
                 </S.ConfirmSubTitle>
               </S.ConfirmListItem>
-              <S.RightTopInfo>{post.createdAt}</S.RightTopInfo>
+              <S.RightTopInfo>{new Date(post.createdAt).toLocaleDateString()}</S.RightTopInfo>
               <S.RightBottomInfo>
                 <img src={Likes} alt="Likes" />
                 <span>{post.liked}</span>
