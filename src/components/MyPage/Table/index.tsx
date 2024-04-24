@@ -37,7 +37,7 @@ const Table: React.FC = () => {
             <S.ConfirmSubTitle>
               <span>통합</span>
               <span> | </span>
-              <span>1분전</span>
+              <span>{new Date(item.createdAt).toLocaleDateString()}</span>
             </S.ConfirmSubTitle>
           </S.ConfirmListItem>
           <S.RightTopInfo onClick={handleModalOpen}>
