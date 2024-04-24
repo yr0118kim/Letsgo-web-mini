@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCreatePostMutation } from "../../utils/api/Writing";
@@ -18,6 +18,7 @@ export function useCreatePost() {
     content: "",
     picture: "",
   });
+  const [postSelected, setPostSelected] = useState<number>(0);
   const [categorySelected, setCategorySelected] = useState<number>(0);
 
   const navigate = useNavigate();
@@ -52,6 +53,10 @@ export function useCreatePost() {
     });
   };
 
+  const handlePostClick = (index: number) => {
+    setPostSelected(index);
+  };
+
   const handleCategoryClick = (index: number) => {
     setCategorySelected(index);
     setPostData((prevData) => ({
@@ -62,9 +67,11 @@ export function useCreatePost() {
 
   return {
     postData,
+    postSelected,
     setPostData,
     handleChange,
     handleSubmit,
+    handlePostClick,
     categorySelected,
     handleCategoryClick,
   };
