@@ -44,7 +44,7 @@ const Table: React.FC = () => {
             <img src={PostToggle} alt="err" />
           </S.RightTopInfo>
           <S.RightBottomInfo>
-            <img src={Likes} width={45} alt="좋아요 수" />
+            <img src={Likes}   alt="좋아요 수" />
               <span>{item.liked}</span>
             <img src={Comment} alt="댓글 수" />
               <span>{item.commented}</span>
