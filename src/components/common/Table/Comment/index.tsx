@@ -2,14 +2,16 @@ import * as C from "./style";
 import chat from "../../../../assets/img/Chat.svg";
 import send from "../../../../assets/img/Send.svg";
 import Comment from "./Comment";
-import CommentContainer from "../../../Comment";
+import { useRecoilState } from "recoil";
 import CommentInput from "./CommentInput";
+import { postIdState } from "../../../../components/atom/postId";
 import { useCommentListQuery } from "../../../../hooks/Comment/getCommentList";
+import { useCreateComment } from "../../../../hooks/Comment/useComment";
+import { useEffect } from "react";
 
 interface propsType {
   postId: number;
 }
-
 
 const CommentFrame = (props: propsType) => {
   const {
@@ -17,6 +19,10 @@ const CommentFrame = (props: propsType) => {
     isLoading,
     isError,
   } = useCommentListQuery(props.postId);
+  const [postId, setPostId] = useRecoilState(postIdState);
+
+  setPostId(props.postId);
+
   return (
     <>
       <C.CommentContainer>
@@ -25,7 +31,16 @@ const CommentFrame = (props: propsType) => {
         ) : isError ? (
           <div> </div>
         ) : !commentListData?.length ? (
-          <div>No comment available.</div>
+          <>
+            <C.CommentHeaderWraper>
+              <C.CommentHeaderTitle>댓글</C.CommentHeaderTitle>
+              <C.CommentNumber>{0}</C.CommentNumber>
+              <C.CommentRestart onClick={() => window.location.reload()}>
+                새로고침
+              </C.CommentRestart>
+            </C.CommentHeaderWraper>
+            <CommentInput />
+          </>
         ) : (
           <>
             <C.CommentHeaderWraper>

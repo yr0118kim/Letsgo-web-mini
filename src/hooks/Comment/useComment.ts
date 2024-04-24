@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCreateCommentMutation } from "../../utils/api/Comment";
+import { useRecoilState } from "recoil";
+import { postIdState } from "../../components/atom/postId";
 
 type CommentProps = {
   post: number;
@@ -17,8 +19,11 @@ interface CommentGroup {
 let CommentGroupList: Array<CommentGroup>;
 
 export function useCreateComment() {
+  const [postId, setPostId] = useRecoilState(postIdState);
+
+  setPostId(postId);
   const [commentData, setCommentData] = useState<CommentProps>({
-    post: 1,
+    post: 0,
     comment: 0,
     content: "",
   });
@@ -34,6 +39,7 @@ export function useCreateComment() {
     const { name, value } = e.target;
     setCommentData((prevData) => ({
       ...prevData,
+      post: postId,
       [name]: value,
     }));
     console.log(commentData);
@@ -45,13 +51,13 @@ export function useCreateComment() {
       // Using the mutation function
       onSuccess: () => {
         toast.success("댓글 등록에 성공했습니다.");
-        navigate("/");
+        window.location.reload();
       },
       onError: (err) => {
         if (axios.isAxiosError(err)) {
           const { status } = err.response?.data as AxiosError;
           toast.error("댓글 등록에 실패했습니다.");
-          console.log(commentData)
+          console.log(commentData);
         } else {
           toast.error("네트워크 연결 상태를 확인해주세요.");
         }

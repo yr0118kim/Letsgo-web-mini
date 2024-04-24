@@ -29,9 +29,10 @@ export const CommentTitle = styled.h2`
   font-weight: 500;
 `;
 export const CommentPostTime = styled.h2`
+  width: 200px;
   font-family: "pretendard";
   color: #4d4d53;
-  font-weight: 300;
+  font-weight: 500;
   font-size: 0.7em;
 `;
 

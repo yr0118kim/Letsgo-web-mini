@@ -15,6 +15,7 @@ export interface CommentType {
   userImg: string;
   createdAt: string;
   updatedAt: string;
+  username: string;
 }
 
 export const useCommentListQuery = (post: number) => {

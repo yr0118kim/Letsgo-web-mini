@@ -10,11 +10,11 @@ import { usePostListQuery, PostType } from "../../../hooks/Post/getPostList";
 const Table: React.FC = () => {
   const navigate = useNavigate();
 
-  const { data: postListData, isLoading, isError } = usePostListQuery(0);
+  const { data: postListData, isLoading, isError } = usePostListQuery(1);
   console.log(postListData);
 
   return (
-    <S.ConfirmListContainer onClick={() => navigate("/post/:id")}>
+    <S.ConfirmListContainer>
       {isLoading ? (
         <div>Loading...</div>
       ) : isError ? (
@@ -24,7 +24,7 @@ const Table: React.FC = () => {
       ) : (
         postListData.map((post: PostType) => (
           <S.ConfirmListItemContaienr
-            onClick={() => navigate("/community")}
+            onClick={() => navigate(`/post/${post.id}`)}
             key={post.id}
           >
             <S.ConfirmImageWrap>
