@@ -54,6 +54,8 @@ export const PostLeftSubTitle = styled.span`
   font-size: 14px;
   font-family: "Pretendard";
   font-weight: 400;
+  
+  margin-right: 7px;
 `;
 
 export const PostRightSubTitle = styled.span`
@@ -61,6 +63,8 @@ export const PostRightSubTitle = styled.span`
   font-size: 14px;
   font-family: "Pretendard";
   font-weight: 400;
+
+  margin-left: 7px;
 `;
 
 export const PostMidContainer = styled.div`
@@ -75,6 +79,7 @@ export const PostMidWrap = styled.div`
   display: flex;
   align-items: center;
   margin-left: 3%;
+  margin-bottom: 1%;
 
   img {
     width: 70%;
