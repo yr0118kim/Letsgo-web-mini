@@ -32,7 +32,7 @@ export const PostTitle = styled.span`
   font-family: "Pretendard";
   font-weight: 400;
 
-  margin: 0 2%;
+  margin-left: 3%;
 `;
 
 export const PostSubTitleWrap = styled.div`

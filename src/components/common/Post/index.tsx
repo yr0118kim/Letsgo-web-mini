@@ -51,14 +51,14 @@ const Post: React.FC = () => {
                 width: "100%",
               }}
             >
-              <div>
+              <div style={{ margin: "0 1%" }}>
                 <d.PostLeftSubTitle>게임</d.PostLeftSubTitle>
                 <d.PostLeftSubTitle>1일전</d.PostLeftSubTitle>
                 <d.PostLeftSubTitle>
                   대구소프트웨어마이스터고 3학년 여학생
                 </d.PostLeftSubTitle>
               </div>
-              <div>
+              <div style={{ margin: "0 1%" }}>
                 <d.PostRightSubTitle>조회수{" "}</d.PostRightSubTitle>
                 <span>{post?.viewed}</span>
                 <d.PostRightSubTitle>댓글{" "}</d.PostRightSubTitle>
@@ -79,7 +79,7 @@ const Post: React.FC = () => {
           <d.PostTagContainer style={{ marginBottom: "2%" }}>
             <d.PostTagHeading>#태그</d.PostTagHeading>
             <d.PostTagHeading>#태그</d.PostTagHeading>
-            <d.PostTagHeading>#태그</d. PostTagHeading>
+            <d.PostTagHeading>#태그</d.PostTagHeading>
             <d.PostTagHeading>#태그</d.PostTagHeading>
           </d.PostTagContainer>
         </d.PostMidContainer>
