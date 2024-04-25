@@ -25,7 +25,11 @@ interface PostListQueryParams {
 }
 
 export const usePostListQuery = (params?: PostListQueryParams) => {
-  const { data: userInfo, isLoading: userInfoLoading, isError: userInfoError } = useMyUserInfo();
+  const {
+    data: userInfo,
+    isLoading: userInfoLoading,
+    isError: userInfoError,
+  } = useMyUserInfo();
 
   return useQuery<PostType[], AxiosError>(
     ["postList", params, userInfo?.id],
@@ -39,7 +43,12 @@ export const usePostListQuery = (params?: PostListQueryParams) => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      return response.data.data;
+
+      const sortedData = response.data.data.sort(
+        (a: any, b: any) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+      return sortedData;
     },
     {
       cacheTime: 300000,

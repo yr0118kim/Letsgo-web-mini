@@ -79,7 +79,7 @@ const Post: React.FC = () => {
           <d.PostTagContainer style={{ marginBottom: "2%" }}>
             <d.PostTagHeading>#태그</d.PostTagHeading>
             <d.PostTagHeading>#태그</d.PostTagHeading>
-            <d.PostTagHeading>#태그</d.PostTagHeading>
+            <d.PostTagHeading>#태그</d. PostTagHeading>
             <d.PostTagHeading>#태그</d.PostTagHeading>
           </d.PostTagContainer>
         </d.PostMidContainer>

@@ -30,7 +30,13 @@ export const usePostListQuery = () => {
           },
         }
       );
-      return response.data.data;
+
+      const sortedData = response.data.data.sort(
+        (a: any, b: any) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      return sortedData;
     },
     {
       cacheTime: 300000,
