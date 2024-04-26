@@ -28,7 +28,7 @@ const Post: React.FC = () => {
 
   const handleLikeClick = () => {
     if (!isLiked) {
-      handleLikePost(postId);
+      handleLikePost(postId); 
     } else {
       handleCancelLikePost(postId);
     }

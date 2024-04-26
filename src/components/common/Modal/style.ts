@@ -17,10 +17,16 @@ export const ModalContent = styled.div`
   height: 196px;
   background-color: white;
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  div {
+    display: flex;
+    justify-content: center;
+    margin: 3% 0;
+  }
 `;
 
 export const ModalButtonWrapper = styled.div`
@@ -28,8 +34,7 @@ export const ModalButtonWrapper = styled.div`
   justify-content: flex-end;
 `;
 
-export const ModalButton = styled.button`
+export const ModalButton = styled.div`
   border: none;
   padding: 5px 10px;
-  cursor: pointer;
 `;
