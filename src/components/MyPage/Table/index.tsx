@@ -17,13 +17,12 @@ const Table = () => {
   const { data: posts, isLoading, isError } = usePostListQuery();
 
   const handleModalOpen = (postId: number) => {
-    setIsModalOpen(true);
     setPostId(postId);
-  };
+    setIsModalOpen(true); 
+  }
 
   const handleCloseModal = () => {
     setIsModalOpen(false);
-    setPostId(null);
   };
 
   if (isLoading) return <div>Loading...</div>;
@@ -31,29 +30,29 @@ const Table = () => {
 
   return (
     <S.ConfirmListContainer>
-      {posts?.map((item: PostType) => (
-        <S.ConfirmListItemContaienr key={item.id}>
+      {posts?.map((post: PostType) => (
+        <S.ConfirmListItemContaienr key={post.id}>
           <S.ConfirmImageWrap>
             <img src={Test} alt="test" />
           </S.ConfirmImageWrap>
           <S.ConfirmListItem style={{ width: "30%", paddingLeft: "3%" }}>
-            {item.title}
+            {post.title}
             <S.ConfirmSubTitle>
               <span>통합</span>
               <span> | </span>
-              <span>{new Date(item.createdAt).toLocaleDateString()}</span>
+              <span>{new Date(post.createdAt).toLocaleDateString()}</span>
             </S.ConfirmSubTitle>
           </S.ConfirmListItem>
-          <S.RightTopInfo onClick={() => handleModalOpen(item.id)}>
+          <S.RightTopInfo onClick={() => handleModalOpen(post.id)}>
             <img src={PostToggle} alt="err" />
           </S.RightTopInfo>
           <S.RightBottomInfo>
             <img src={Likes} alt="좋아요 수" />
-            <span>{item.liked}</span>
+            <span>{post.liked}</span>
             <img src={Comment} alt="댓글 수" />
-            <span>{item.commented}</span>
+            <span>{post.commented}</span>
             <img src={Viewer} alt="본사람" />
-            <span>{item.viewed}</span>
+            <span>{post.viewed}</span>
           </S.RightBottomInfo>
         </S.ConfirmListItemContaienr>
       ))}
