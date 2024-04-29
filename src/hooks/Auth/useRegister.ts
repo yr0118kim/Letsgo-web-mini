@@ -29,25 +29,12 @@ export function useRegister() {
     }));
   };
 
-  const saveRegisterDataToLocalStorage = () => {
-    localStorage.setItem("registerData", JSON.stringify(registerData));
-  };
-
-  const getRegisterDataFromLocalStorage = () => {
-    const data = localStorage.getItem("registerData");
-    if (data) {
-      return JSON.parse(data);
-    }
-    return null;
-  };
-
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     register.mutate(registerData, {
       onSuccess: () => { 
-        toast.success("회원가입에 성공했습니다.");     
-        localStorage.setItem("registerData", JSON.stringify(registerData));
-        
+        toast.success("회원가입에 성공했습니다."); 
+        localStorage.setItem("registerData", JSON.stringify(registerData));   
         navigate("/login");
       },
       onError: (err) => { 
@@ -69,5 +56,6 @@ export function useRegister() {
       },
     });
   };
-  return { registerData, setRegisterData, handleChange, handleSubmit, saveRegisterDataToLocalStorage, getRegisterDataFromLocalStorage };
+
+  return { registerData, setRegisterData, handleChange, handleSubmit };
 }

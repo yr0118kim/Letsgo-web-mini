@@ -1,54 +1,62 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import * as S from "./style";
 import Likes from "../../../assets/like.svg";
 import Comment from "../../../assets/comment.svg";
 import Viewer from "../../../assets/view.svg";
 import Test from "../../../assets/test.svg";
 import PostToggle from "../../../assets/toggle.svg";
-import { useNavigate } from "react-router-dom";
+import Modal from "../../../components/common/Modal";
+import {
+  usePostListQuery,
+  PostType,
+} from "../../../hooks/Post/MyPage/usePostList";
 
-const Table: React.FC = () => {
-  const navigate = useNavigate();
-  const [showModal, setShowModal] = useState(false);
+const Table = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [postId, setPostId] = useState<number | null>(null);
+  const { data: posts, isLoading, isError } = usePostListQuery();
 
-  const items = [
-    { id: 1, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 2, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 3, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 4, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 5, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 6, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-    { id: 7, title: "안녕하세요", subTitle: "통합 | 선화예술고등학교 3학년" },
-  ];
+  const handleModalOpen = (postId: number) => {
+    setPostId(postId);
+    setIsModalOpen(true); 
+  }
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {isError}</div>;
 
   return (
     <S.ConfirmListContainer>
-      {items.map((item) => (
-        <S.ConfirmListItemContaienr key={item.id}>
+      {posts?.map((post: PostType) => (
+        <S.ConfirmListItemContaienr key={post.id}>
           <S.ConfirmImageWrap>
             <img src={Test} alt="test" />
           </S.ConfirmImageWrap>
           <S.ConfirmListItem style={{ width: "30%", paddingLeft: "3%" }}>
-            {item.title}
+            {post.title}
             <S.ConfirmSubTitle>
               <span>통합</span>
               <span> | </span>
-              <span>1분전</span>
+              <span>{new Date(post.createdAt).toLocaleDateString()}</span>
             </S.ConfirmSubTitle>
           </S.ConfirmListItem>
-          <S.RightTopInfo>
+          <S.RightTopInfo onClick={() => handleModalOpen(post.id)}>
             <img src={PostToggle} alt="err" />
           </S.RightTopInfo>
           <S.RightBottomInfo>
-            <img src={Likes} width={45} alt="좋아요 수" />
-              <span>16</span>
+            <img src={Likes} alt="좋아요 수" />
+            <span>{post.liked}</span>
             <img src={Comment} alt="댓글 수" />
-              <span>2</span>
+            <span>{post.commented}</span>
             <img src={Viewer} alt="본사람" />
-              <span>50</span>
+            <span>{post.viewed}</span>
           </S.RightBottomInfo>
         </S.ConfirmListItemContaienr>
       ))}
+      <Modal isOpen={isModalOpen} onClose={handleCloseModal} />
     </S.ConfirmListContainer>
   );
 };

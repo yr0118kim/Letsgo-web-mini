@@ -42,7 +42,6 @@ export function useCreateComment() {
       post: postId,
       [name]: value,
     }));
-    console.log(commentData);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {

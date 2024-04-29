@@ -63,7 +63,7 @@ const MyPage = () => {
           },
         ]}
       />
-      {tabNum === 0 && location.pathname === "/profile" && <Table />}
+      {tabNum === 0 && location.pathname === "/profile" && <Table/>}
     </Layout>
   );
 };

@@ -13,25 +13,30 @@ export interface PostType {
   viewed: number;
   liked: number;
   commented: number;
-  isLike: boolean;
-  userImg: string;
   createdAt: string;
   updatedAt: string;
 }
 
-export const usePostListQuery = (category: number) => {
+export const usePostListQuery = () => {
   return useQuery<PostType[], AxiosError>(
-    ["postList", category],
+    "postList",
     async () => {
       const { accessToken } = getToken();
-      const params = { category };
-      const response = await instance.get("/post", {
-        params,
-        headers: {
-          Authorization: `Bearer ${accessToken}`,
-        },
-      });
-무
+      const response = await instance.get(
+        `${import.meta.env.VITE_BASE_URL}/post`,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      const sortedData = response.data.data.sort(
+        (a: any, b: any) =>
+          new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      );
+
+      return sortedData;
     },
     {
       cacheTime: 300000,

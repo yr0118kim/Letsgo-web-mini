@@ -31,12 +31,22 @@ export const PostTitle = styled.span`
   font-size: 24px;
   font-family: "Pretendard";
   font-weight: 400;
+
+  margin-left: 3%;
 `;
 
 export const PostSubTitleWrap = styled.div`
   display: flex;
   justify-content: space-between;
-  margin-bottom: 3%;
+
+  margin: 3% 2%;
+
+  span {
+    font-size: 14px;
+    font-family: 'Pretendard';
+    font-weight: 400;
+    color: #706F88;
+  }
 `;
 
 export const PostLeftSubTitle = styled.span`
@@ -44,6 +54,8 @@ export const PostLeftSubTitle = styled.span`
   font-size: 14px;
   font-family: "Pretendard";
   font-weight: 400;
+  
+  margin-right: 7px;
 `;
 
 export const PostRightSubTitle = styled.span`
@@ -51,6 +63,8 @@ export const PostRightSubTitle = styled.span`
   font-size: 14px;
   font-family: "Pretendard";
   font-weight: 400;
+
+  margin-left: 7px;
 `;
 
 export const PostMidContainer = styled.div`
@@ -65,6 +79,7 @@ export const PostMidWrap = styled.div`
   display: flex;
   align-items: center;
   margin-left: 3%;
+  margin-bottom: 1%;
 
   img {
     width: 70%;

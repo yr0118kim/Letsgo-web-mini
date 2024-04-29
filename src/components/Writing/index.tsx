@@ -2,13 +2,16 @@ import Layout from "../common/Layout";
 import WritingHeader from "./Header";
 import * as W from "./style";
 import { useCreatePost } from "../../hooks/Writing/usePost";
+import { useNavigate } from "react-router-dom";
 
 const Writing = () => {
+  const navigate = useNavigate();
   const { postData, handleChange, handleSubmit } = useCreatePost();
+  
   return (
     <Layout>
       <W.WritingContainer onSubmit={handleSubmit}>
-        <WritingHeader></WritingHeader>
+        <WritingHeader />
         <W.WritingTitleInput
           type="text"
           name="title"
@@ -22,7 +25,15 @@ const Writing = () => {
           placeholder="내용을 입력하세요"
           onChange={handleChange}
         />
-        <W.ImageButton type="submit"></W.ImageButton>
+        <W.ImageButton type="submit" />
+        <W.WritingButtonWrapper>
+          <W.WritingCancelButton onClick={() => navigate("/")}>
+            <span>취소</span>
+          </W.WritingCancelButton>
+          <W.WritingPostButton>
+            <span>작성완료</span>
+          </W.WritingPostButton>
+        </W.WritingButtonWrapper>
       </W.WritingContainer>
     </Layout>
   );

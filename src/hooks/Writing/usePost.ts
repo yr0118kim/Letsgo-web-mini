@@ -1,5 +1,5 @@
 import toast from "react-hot-toast";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import axios, { AxiosError } from "axios";
 import { useNavigate } from "react-router-dom";
 import { useCreatePostMutation } from "../../utils/api/Writing";
@@ -10,12 +10,6 @@ type PostProps = {
   content: string;
   picture: string;
 };
-
-interface PostGroup {
-  title: string;
-}
-
-let PostGroupList: Array<PostGroup>;
 
 export function useCreatePost() {
   const [postData, setPostData] = useState<PostProps>({
@@ -40,7 +34,6 @@ export function useCreatePost() {
       ...prevData,
       [name]: value,
     }));
-    console.log(postData);
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -50,9 +43,8 @@ export function useCreatePost() {
         toast.success("게시물 등록에 성공했습니다.");
         navigate("/");
       },
-      onError: (err) => {
+      onError: (err: AxiosError) => {
         if (axios.isAxiosError(err)) {
-          const { status } = err.response?.data as AxiosError;
           toast.error("게시물 등록에 실패했습니다.");
         } else {
           toast.error("네트워크 연결 상태를 확인해주세요.");
@@ -65,27 +57,22 @@ export function useCreatePost() {
     setPostSelected(index);
   };
 
-  useEffect(() => {
-    setPostData((prevData) => ({
-      ...prevData,
-      category: categorySelected,
-    }));
-
-    console.log(postData);
-  }, [categorySelected]);
-
   const handleCategoryClick = (index: number) => {
     setCategorySelected(index);
+    setPostData((prevData) => ({
+      ...prevData,
+      category: index,
+    }));
   };
 
   return {
     postData,
+    postSelected,
     setPostData,
     handleChange,
     handleSubmit,
-    postSelected,
-    categorySelected,
     handlePostClick,
+    categorySelected,
     handleCategoryClick,
   };
 }
