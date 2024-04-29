@@ -31,7 +31,7 @@ export const usePostListQuery = (category: number) => {
           Authorization: `Bearer ${accessToken}`,
         },
       });
-      return response.data.data;
+무
     },
     {
       cacheTime: 300000,
